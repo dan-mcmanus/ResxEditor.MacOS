@@ -3,16 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		370E9F4724C3F81C00D1D363 /* RexeditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4624C3F81C00D1D363 /* RexeditApp.swift */; };
-		370E9F4924C3F81C00D1D363 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4824C3F81C00D1D363 /* ContentView.swift */; };
+		370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4824C3F81C00D1D363 /* ResourceView.swift */; };
 		370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4A24C3F81D00D1D363 /* Assets.xcassets */; };
 		370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */; };
 		370E9F5A24C3F81D00D1D363 /* RexeditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F5924C3F81D00D1D363 /* RexeditTests.swift */; };
 		370E9F6524C3F81D00D1D363 /* RexeditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F6424C3F81D00D1D363 /* RexeditUITests.swift */; };
+		370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F7224C3F8C300D1D363 /* ResourceRow.swift */; };
+		3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782F24624C4DDE4008B18C3 /* FileData.swift */; };
+		379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379792A324C49B5100AA9DB0 /* FileUtility.swift */; };
+		379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 379792A924C4A04D00AA9DB0 /* AEXML */; };
+		37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */; };
+		37A6B23E24C40E5300AEEBA7 /* Example.resx in Resources */ = {isa = PBXBuildFile; fileRef = 37A6B23D24C40E5300AEEBA7 /* Example.resx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +41,7 @@
 /* Begin PBXFileReference section */
 		370E9F4324C3F81C00D1D363 /* Rexedit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rexedit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		370E9F4624C3F81C00D1D363 /* RexeditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexeditApp.swift; sourceTree = "<group>"; };
-		370E9F4824C3F81C00D1D363 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		370E9F4824C3F81C00D1D363 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
 		370E9F4A24C3F81D00D1D363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		370E9F4F24C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +52,11 @@
 		370E9F6024C3F81D00D1D363 /* RexeditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RexeditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		370E9F6424C3F81D00D1D363 /* RexeditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexeditUITests.swift; sourceTree = "<group>"; };
 		370E9F6624C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		370E9F7224C3F8C300D1D363 /* ResourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRow.swift; sourceTree = "<group>"; };
+		3782F24624C4DDE4008B18C3 /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
+		379792A324C49B5100AA9DB0 /* FileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
+		37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
+		37A6B23D24C40E5300AEEBA7 /* Example.resx */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example.resx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +108,12 @@
 		370E9F4524C3F81C00D1D363 /* Rexedit */ = {
 			isa = PBXGroup;
 			children = (
+				379792A224C49B3E00AA9DB0 /* Services */,
+				37A6B23C24C40E2700AEEBA7 /* Data */,
+				37A6B21824C3FD2D00AEEBA7 /* Models */,
+				370E9F7424C3FBA400D1D363 /* SupportingViews */,
+				370E9F4824C3F81C00D1D363 /* ResourceView.swift */,
 				370E9F4624C3F81C00D1D363 /* RexeditApp.swift */,
-				370E9F4824C3F81C00D1D363 /* ContentView.swift */,
 				370E9F4A24C3F81D00D1D363 /* Assets.xcassets */,
 				370E9F4F24C3F81D00D1D363 /* Info.plist */,
 				370E9F5024C3F81D00D1D363 /* Rexedit.entitlements */,
@@ -132,6 +148,39 @@
 			path = RexeditUITests;
 			sourceTree = "<group>";
 		};
+		370E9F7424C3FBA400D1D363 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				370E9F7224C3F8C300D1D363 /* ResourceRow.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		379792A224C49B3E00AA9DB0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				379792A324C49B5100AA9DB0 /* FileUtility.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		37A6B21824C3FD2D00AEEBA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		37A6B23C24C40E2700AEEBA7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				37A6B23D24C40E5300AEEBA7 /* Example.resx */,
+				3782F24624C4DDE4008B18C3 /* FileData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,6 +197,9 @@
 			dependencies = (
 			);
 			name = Rexedit;
+			packageProductDependencies = (
+				379792A924C4A04D00AA9DB0 /* AEXML */,
+			);
 			productName = Rexedit;
 			productReference = 370E9F4324C3F81C00D1D363 /* Rexedit.app */;
 			productType = "com.apple.product-type.application";
@@ -219,6 +271,9 @@
 				Base,
 			);
 			mainGroup = 370E9F3A24C3F81C00D1D363;
+			packageReferences = (
+				379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */,
+			);
 			productRefGroup = 370E9F4424C3F81C00D1D363 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -237,6 +292,7 @@
 			files = (
 				370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */,
 				370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */,
+				37A6B23E24C40E5300AEEBA7 /* Example.resx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +317,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				370E9F4924C3F81C00D1D363 /* ContentView.swift in Sources */,
+				379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */,
+				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
+				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
+				370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */,
 				370E9F4724C3F81C00D1D363 /* RexeditApp.swift in Sources */,
+				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +645,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tadija/AEXML.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		379792A924C4A04D00AA9DB0 /* AEXML */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */;
+			productName = AEXML;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 370E9F3B24C3F81C00D1D363 /* Project object */;
 }
