@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct RexeditApp: App {
+struct RexEditApp: App {
     var body: some Scene {
         WindowGroup {
-            ResourceView().environmentObject(FileData())
+            ResourceView()
+                .environmentObject(FileData())
+                .environmentObject(Entry())
         }
     }
 }

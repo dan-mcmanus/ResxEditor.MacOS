@@ -9,48 +9,57 @@ import SwiftUI
 
 struct ResourceRow: View {
     @EnvironmentObject var fileData: FileData
-    var fileUtil: FileUtility = FileUtility()
     
-    @State private var invalid: Bool = false
+    //var fileUtil: FileUtility = FileUtility()
+    
     @State var currentItem: ResourceEntry
     @State var keyIsValid = false
     @State var textIsValid = false
-    @State var isFocused = true
+    @State var isLocked = true
+    
     var originalKey: String
     var originalText: String
     
     var body: some View {
-        let linkColor = self.validateRow() ? Color.green : Color.gray
         return HStack {
+            Spacer()
+            Button("") {
+                isLocked = !isLocked
+                
+            }.overlay(isLocked ? Image(systemName: "lock") : Image(systemName: "lock.open"))
             Spacer()
             
             TextField("Key",
-                      text: self.$currentItem.key,
-                      onEditingChanged: { _ in print("key changed") },
+                      text: $currentItem.key,
+                      // onEditingChanged: { (onEditingChanged) in
+                      //                        print(onEditingChanged)
+                      //                      },
                       onCommit: {
-                        validateKey(key: self.currentItem.key)
-                      })
+                        if currentItem.key.contains(" ") {
+                            currentItem.key = currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
+                      }).disabled(isLocked)
             Spacer()
             TextField("Value",
-                      text: self.$currentItem.text,
-                      onEditingChanged: { (onEditingChanged) in
-                        print(onEditingChanged)
-                      },
+                      text: $currentItem.text,
                       onCommit: {
-                        validateText(text: self.currentItem.text)
-                      })
+                        validateText(text: currentItem.text)
+                      }).disabled(isLocked)
             Spacer()
-            
-                Button("✓") {
-                    if self.originalKey != self.currentItem.key {
-                        fileUtil.updateEntry(filePath: self.fileData.filePath, originalKey: self.originalKey, originalText: self.originalText, updatedEntry: self.currentItem)
-                    }
-                    fileUtil.writeTo(filePath: self.fileData.filePath, entry: self.currentItem)
-                    //self.fileData.resources.append(ResourceEntry(key: self.key, text: self.text))
-                }.foregroundColor(linkColor)
-                .disabled(!self.keyIsValid && !self.textIsValid)
-            
 
+            
+            
+            Button("save") {
+                if originalKey != currentItem.key || originalText != currentItem.text {
+                    if currentItem.isNew {
+                        FileUtility.writeTo(filePath: fileData.filePath, entry: currentItem)
+                    } else {
+                        FileUtility.updateEntry(filePath: fileData.filePath, originalKey: originalKey,
+                                                originalText: originalText, updatedEntry: currentItem)
+                    }
+                }
+                
+            }.disabled(isLocked)
             Spacer()
         }
         
@@ -58,22 +67,22 @@ struct ResourceRow: View {
     }
     
     func validateKey(key: String) {
-        self.keyIsValid = key != ""
+        keyIsValid = key != ""
         
     }
     
     func validateText(text: String) {
-        self.textIsValid = text != ""
+        textIsValid = text != ""
     }
     
     func validateRow() -> Bool {
-        return self.currentItem.key != "" && self.currentItem.text != ""
+        return currentItem.key != "" && currentItem.text != ""
     }
     
 }
 
-//struct ResourceRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ResourceRow(resource: ResourceEntry(key: "", text: "e"))
-//    }
-//}
+struct ResourceRow_Previews: PreviewProvider {
+    static var previews: some View {
+        ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "")
+    }
+}

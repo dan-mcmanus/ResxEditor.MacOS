@@ -11,39 +11,40 @@ import Foundation
 
 struct ResourceView: View {
     @EnvironmentObject var fileData: FileData
-    var fileUtil: FileUtility = FileUtility()
-    
     
     func addResourceNode() {
-        fileData.resources.append(ResourceEntry(key: "", text: ""))
+        fileData.resources.append(ResourceEntry(key: "", text: "", isNew: true))
     }
     
     var body: some View {
         
-        return VStack {
-            HStack {
-                Button("+") {
-                    addResourceNode()
-                }
-                .padding(.leading)
-                Spacer()
-                Text("Resource Key")
-                Spacer()
-                Text("Resource Value")
-                Spacer()
-
-                Button("Choose file") {
-                    selectFile()
+        return
+            ScrollView {
+                VStack {
+                    HStack {
+                        Button("+") {
+                            addResourceNode()
+                        }
+                        .padding(.leading)
+                        Spacer()
+                        Text("Resource Key")
+                        Spacer()
+                        Text("Resource Value")
+                        Spacer()
+                        
+                        Button("Choose file") {
+                            selectFile()
+                            
+                        }.padding(.trailing)
+                    }.padding(.top)
+                    ForEach(fileData.resources) { resource in
+                        ResourceRow(currentItem: resource, originalKey: resource.key, originalText: resource.text)
+                        
+                    }.textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                }.padding(.trailing)
-            }.padding(.top)
-            ForEach(self.fileData.resources) { resource in
-                ResourceRow(currentItem: resource, originalKey: resource.key, originalText: resource.text)
-                
-            }.textFieldStyle(RoundedBorderTextFieldStyle())
-        
-            Spacer()
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    Spacer()
+                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
     }
     
     // https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-directory-picker-in-macos-using-swift-5
@@ -60,12 +61,11 @@ struct ResourceView: View {
             let result = dialog.url
             
             if (result != nil) {
-                self.fileData.filePath = result!.path
-                self.fileData.resourceDictionary = fileUtil.parseFile(filePath: self.fileData.filePath)
-                self.fileData.resources.removeAll()
-                for (key, val) in self.fileData.resourceDictionary {
-                    self.fileData.resources.append(ResourceEntry(key: key, text: val))
-                }
+                fileData.filePath = result!.path
+                fileData.resources.removeAll()
+                
+                fileData.resources = parseFile(filePath: fileData.filePath)
+                fileData.resources = fileData.resources.sorted(by: { $0.key.lowercased() < $1.key.lowercased() })
             }
             
         } else {
@@ -75,9 +75,9 @@ struct ResourceView: View {
     }
 }
 
+
 struct ResourceView_Previews: PreviewProvider {
     static var previews: some View {
         ResourceView().environmentObject(FileData())
-            
     }
 }

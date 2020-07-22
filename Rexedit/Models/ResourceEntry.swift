@@ -12,14 +12,17 @@ struct ResourceEntry: Identifiable {
     let id = UUID()
     var key = ""
     var text = ""
+    var isNew: Bool
+    
+    init(key: String, text: String, isNew: Bool) {
+        self.key = key
+        self.text = text
+        self.isNew = isNew
+    }
   
 }
-extension Array where Element: Equatable {
-    
-    // Remove first collection element that is equal to the given `object`:
-    mutating func remove(object: Element) {
-        guard let index = firstIndex(of: object) else {return}
-        remove(at: index)
-    }
-    
+
+class Entry: ObservableObject {
+    @Published var key: String = ""
+    @Published var value: String = ""
 }

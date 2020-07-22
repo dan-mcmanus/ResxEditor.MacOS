@@ -7,56 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		370E9F4724C3F81C00D1D363 /* RexeditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4624C3F81C00D1D363 /* RexeditApp.swift */; };
+		370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4624C3F81C00D1D363 /* RexEditApp.swift */; };
 		370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4824C3F81C00D1D363 /* ResourceView.swift */; };
 		370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4A24C3F81D00D1D363 /* Assets.xcassets */; };
 		370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */; };
-		370E9F5A24C3F81D00D1D363 /* RexeditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F5924C3F81D00D1D363 /* RexeditTests.swift */; };
-		370E9F6524C3F81D00D1D363 /* RexeditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F6424C3F81D00D1D363 /* RexeditUITests.swift */; };
 		370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F7224C3F8C300D1D363 /* ResourceRow.swift */; };
 		3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782F24624C4DDE4008B18C3 /* FileData.swift */; };
 		379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379792A324C49B5100AA9DB0 /* FileUtility.swift */; };
 		379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 379792A924C4A04D00AA9DB0 /* AEXML */; };
 		37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */; };
-		37A6B23E24C40E5300AEEBA7 /* Example.resx in Resources */ = {isa = PBXBuildFile; fileRef = 37A6B23D24C40E5300AEEBA7 /* Example.resx */; };
+		37DE78A124C7E6A100738B15 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A024C7E6A100738B15 /* FieldValidator.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		370E9F5624C3F81D00D1D363 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 370E9F3B24C3F81C00D1D363 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 370E9F4224C3F81C00D1D363;
-			remoteInfo = Rexedit;
-		};
-		370E9F6124C3F81D00D1D363 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 370E9F3B24C3F81C00D1D363 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 370E9F4224C3F81C00D1D363;
-			remoteInfo = Rexedit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		370E9F4324C3F81C00D1D363 /* Rexedit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rexedit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		370E9F4624C3F81C00D1D363 /* RexeditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexeditApp.swift; sourceTree = "<group>"; };
+		370E9F4324C3F81C00D1D363 /* RexEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RexEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		370E9F4624C3F81C00D1D363 /* RexEditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexEditApp.swift; sourceTree = "<group>"; };
 		370E9F4824C3F81C00D1D363 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
 		370E9F4A24C3F81D00D1D363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		370E9F4F24C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		370E9F5024C3F81D00D1D363 /* Rexedit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rexedit.entitlements; sourceTree = "<group>"; };
-		370E9F5524C3F81D00D1D363 /* RexeditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RexeditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		370E9F5924C3F81D00D1D363 /* RexeditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexeditTests.swift; sourceTree = "<group>"; };
-		370E9F5B24C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		370E9F6024C3F81D00D1D363 /* RexeditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RexeditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		370E9F6424C3F81D00D1D363 /* RexeditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexeditUITests.swift; sourceTree = "<group>"; };
-		370E9F6624C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		370E9F5024C3F81D00D1D363 /* RexEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexEdit.entitlements; sourceTree = "<group>"; };
 		370E9F7224C3F8C300D1D363 /* ResourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRow.swift; sourceTree = "<group>"; };
 		3782F24624C4DDE4008B18C3 /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
 		379792A324C49B5100AA9DB0 /* FileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
 		37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
-		37A6B23D24C40E5300AEEBA7 /* Example.resx */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example.resx; sourceTree = "<group>"; };
+		37DE78A024C7E6A100738B15 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,29 +43,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		370E9F5224C3F81D00D1D363 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		370E9F5D24C3F81D00D1D363 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		370E9F3A24C3F81C00D1D363 = {
 			isa = PBXGroup;
 			children = (
-				370E9F4524C3F81C00D1D363 /* Rexedit */,
-				370E9F5824C3F81D00D1D363 /* RexeditTests */,
-				370E9F6324C3F81D00D1D363 /* RexeditUITests */,
+				370E9F4524C3F81C00D1D363 /* RexEdit */,
 				370E9F4424C3F81C00D1D363 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,28 +57,27 @@
 		370E9F4424C3F81C00D1D363 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				370E9F4324C3F81C00D1D363 /* Rexedit.app */,
-				370E9F5524C3F81D00D1D363 /* RexeditTests.xctest */,
-				370E9F6024C3F81D00D1D363 /* RexeditUITests.xctest */,
+				370E9F4324C3F81C00D1D363 /* RexEdit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		370E9F4524C3F81C00D1D363 /* Rexedit */ = {
+		370E9F4524C3F81C00D1D363 /* RexEdit */ = {
 			isa = PBXGroup;
 			children = (
-				379792A224C49B3E00AA9DB0 /* Services */,
+				37DE789F24C7E68D00738B15 /* Helpers */,
+				370E9F4C24C3F81D00D1D363 /* Preview Content */,
+				370E9F5024C3F81D00D1D363 /* RexEdit.entitlements */,
+				370E9F4F24C3F81D00D1D363 /* Info.plist */,
+				370E9F4A24C3F81D00D1D363 /* Assets.xcassets */,
+				370E9F4624C3F81C00D1D363 /* RexEditApp.swift */,
+				370E9F4824C3F81C00D1D363 /* ResourceView.swift */,
 				37A6B23C24C40E2700AEEBA7 /* Data */,
 				37A6B21824C3FD2D00AEEBA7 /* Models */,
+				379792A224C49B3E00AA9DB0 /* Services */,
 				370E9F7424C3FBA400D1D363 /* SupportingViews */,
-				370E9F4824C3F81C00D1D363 /* ResourceView.swift */,
-				370E9F4624C3F81C00D1D363 /* RexeditApp.swift */,
-				370E9F4A24C3F81D00D1D363 /* Assets.xcassets */,
-				370E9F4F24C3F81D00D1D363 /* Info.plist */,
-				370E9F5024C3F81D00D1D363 /* Rexedit.entitlements */,
-				370E9F4C24C3F81D00D1D363 /* Preview Content */,
 			);
-			path = Rexedit;
+			path = RexEdit;
 			sourceTree = "<group>";
 		};
 		370E9F4C24C3F81D00D1D363 /* Preview Content */ = {
@@ -128,24 +86,6 @@
 				370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		370E9F5824C3F81D00D1D363 /* RexeditTests */ = {
-			isa = PBXGroup;
-			children = (
-				370E9F5924C3F81D00D1D363 /* RexeditTests.swift */,
-				370E9F5B24C3F81D00D1D363 /* Info.plist */,
-			);
-			path = RexeditTests;
-			sourceTree = "<group>";
-		};
-		370E9F6324C3F81D00D1D363 /* RexeditUITests */ = {
-			isa = PBXGroup;
-			children = (
-				370E9F6424C3F81D00D1D363 /* RexeditUITests.swift */,
-				370E9F6624C3F81D00D1D363 /* Info.plist */,
-			);
-			path = RexeditUITests;
 			sourceTree = "<group>";
 		};
 		370E9F7424C3FBA400D1D363 /* SupportingViews */ = {
@@ -175,18 +115,25 @@
 		37A6B23C24C40E2700AEEBA7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				37A6B23D24C40E5300AEEBA7 /* Example.resx */,
 				3782F24624C4DDE4008B18C3 /* FileData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
+		37DE789F24C7E68D00738B15 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				37DE78A024C7E6A100738B15 /* FieldValidator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		370E9F4224C3F81C00D1D363 /* Rexedit */ = {
+		370E9F4224C3F81C00D1D363 /* RexEdit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 370E9F6924C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "Rexedit" */;
+			buildConfigurationList = 370E9F6924C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "RexEdit" */;
 			buildPhases = (
 				370E9F3F24C3F81C00D1D363 /* Sources */,
 				370E9F4024C3F81C00D1D363 /* Frameworks */,
@@ -196,49 +143,13 @@
 			);
 			dependencies = (
 			);
-			name = Rexedit;
+			name = RexEdit;
 			packageProductDependencies = (
 				379792A924C4A04D00AA9DB0 /* AEXML */,
 			);
-			productName = Rexedit;
-			productReference = 370E9F4324C3F81C00D1D363 /* Rexedit.app */;
+			productName = RexEdit;
+			productReference = 370E9F4324C3F81C00D1D363 /* RexEdit.app */;
 			productType = "com.apple.product-type.application";
-		};
-		370E9F5424C3F81D00D1D363 /* RexeditTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 370E9F6C24C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "RexeditTests" */;
-			buildPhases = (
-				370E9F5124C3F81D00D1D363 /* Sources */,
-				370E9F5224C3F81D00D1D363 /* Frameworks */,
-				370E9F5324C3F81D00D1D363 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				370E9F5724C3F81D00D1D363 /* PBXTargetDependency */,
-			);
-			name = RexeditTests;
-			productName = RexeditTests;
-			productReference = 370E9F5524C3F81D00D1D363 /* RexeditTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		370E9F5F24C3F81D00D1D363 /* RexeditUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 370E9F6F24C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "RexeditUITests" */;
-			buildPhases = (
-				370E9F5C24C3F81D00D1D363 /* Sources */,
-				370E9F5D24C3F81D00D1D363 /* Frameworks */,
-				370E9F5E24C3F81D00D1D363 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				370E9F6224C3F81D00D1D363 /* PBXTargetDependency */,
-			);
-			name = RexeditUITests;
-			productName = RexeditUITests;
-			productReference = 370E9F6024C3F81D00D1D363 /* RexeditUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -252,17 +163,9 @@
 					370E9F4224C3F81C00D1D363 = {
 						CreatedOnToolsVersion = 12.0;
 					};
-					370E9F5424C3F81D00D1D363 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 370E9F4224C3F81C00D1D363;
-					};
-					370E9F5F24C3F81D00D1D363 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 370E9F4224C3F81C00D1D363;
-					};
 				};
 			};
-			buildConfigurationList = 370E9F3E24C3F81C00D1D363 /* Build configuration list for PBXProject "Rexedit" */;
+			buildConfigurationList = 370E9F3E24C3F81C00D1D363 /* Build configuration list for PBXProject "RexEdit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -278,9 +181,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				370E9F4224C3F81C00D1D363 /* Rexedit */,
-				370E9F5424C3F81D00D1D363 /* RexeditTests */,
-				370E9F5F24C3F81D00D1D363 /* RexeditUITests */,
+				370E9F4224C3F81C00D1D363 /* RexEdit */,
 			);
 		};
 /* End PBXProject section */
@@ -292,21 +193,6 @@
 			files = (
 				370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */,
 				370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */,
-				37A6B23E24C40E5300AEEBA7 /* Example.resx in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		370E9F5324C3F81D00D1D363 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		370E9F5E24C3F81D00D1D363 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,41 +207,13 @@
 				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
 				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
 				370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */,
-				370E9F4724C3F81C00D1D363 /* RexeditApp.swift in Sources */,
+				370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */,
 				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		370E9F5124C3F81D00D1D363 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				370E9F5A24C3F81D00D1D363 /* RexeditTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		370E9F5C24C3F81D00D1D363 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				370E9F6524C3F81D00D1D363 /* RexeditUITests.swift in Sources */,
+				37DE78A124C7E6A100738B15 /* FieldValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		370E9F5724C3F81D00D1D363 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 370E9F4224C3F81C00D1D363 /* Rexedit */;
-			targetProxy = 370E9F5624C3F81D00D1D363 /* PBXContainerItemProxy */;
-		};
-		370E9F6224C3F81D00D1D363 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 370E9F4224C3F81C00D1D363 /* Rexedit */;
-			targetProxy = 370E9F6124C3F81D00D1D363 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		370E9F6724C3F81D00D1D363 /* Debug */ = {
@@ -478,20 +336,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Rexedit/Rexedit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RexEdit/RexEdit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Rexedit/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RexEdit/Preview Content\"";
 				DEVELOPMENT_TEAM = 2M498ARC87;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Rexedit/Info.plist;
+				INFOPLIST_FILE = RexEdit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.Rexedit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -502,113 +360,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Rexedit/Rexedit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RexEdit/RexEdit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Rexedit/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RexEdit/Preview Content\"";
 				DEVELOPMENT_TEAM = 2M498ARC87;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Rexedit/Info.plist;
+				INFOPLIST_FILE = RexEdit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.Rexedit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		370E9F6D24C3F81D00D1D363 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2M498ARC87;
-				INFOPLIST_FILE = RexeditTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexeditTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rexedit.app/Contents/MacOS/Rexedit";
-			};
-			name = Debug;
-		};
-		370E9F6E24C3F81D00D1D363 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2M498ARC87;
-				INFOPLIST_FILE = RexeditTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexeditTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rexedit.app/Contents/MacOS/Rexedit";
-			};
-			name = Release;
-		};
-		370E9F7024C3F81D00D1D363 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2M498ARC87;
-				INFOPLIST_FILE = RexeditUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexeditUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Rexedit;
-			};
-			name = Debug;
-		};
-		370E9F7124C3F81D00D1D363 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2M498ARC87;
-				INFOPLIST_FILE = RexeditUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexeditUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Rexedit;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		370E9F3E24C3F81C00D1D363 /* Build configuration list for PBXProject "Rexedit" */ = {
+		370E9F3E24C3F81C00D1D363 /* Build configuration list for PBXProject "RexEdit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				370E9F6724C3F81D00D1D363 /* Debug */,
@@ -617,29 +391,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		370E9F6924C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "Rexedit" */ = {
+		370E9F6924C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "RexEdit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				370E9F6A24C3F81D00D1D363 /* Debug */,
 				370E9F6B24C3F81D00D1D363 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		370E9F6C24C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "RexeditTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				370E9F6D24C3F81D00D1D363 /* Debug */,
-				370E9F6E24C3F81D00D1D363 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		370E9F6F24C3F81D00D1D363 /* Build configuration list for PBXNativeTarget "RexeditUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				370E9F7024C3F81D00D1D363 /* Debug */,
-				370E9F7124C3F81D00D1D363 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
