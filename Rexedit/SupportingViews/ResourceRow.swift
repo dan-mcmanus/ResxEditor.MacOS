@@ -64,6 +64,8 @@ struct ResourceRow: View {
                         FileUtility.updateEntry(filePath: fileData.filePath, originalKey: originalKey,
                                                 originalText: originalText, updatedEntry: currentItem)
                     }
+                    
+                    isLocked = true
                 }
                 
             }.disabled(isLocked)
