@@ -12,11 +12,14 @@
 		370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4A24C3F81D00D1D363 /* Assets.xcassets */; };
 		370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */; };
 		370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F7224C3F8C300D1D363 /* ResourceRow.swift */; };
+		3768363E24C87D6F0052FAD5 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 3768363D24C87D6F0052FAD5 /* Files */; };
 		3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782F24624C4DDE4008B18C3 /* FileData.swift */; };
 		379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379792A324C49B5100AA9DB0 /* FileUtility.swift */; };
 		379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 379792A924C4A04D00AA9DB0 /* AEXML */; };
 		37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */; };
-		37DE78A124C7E6A100738B15 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A024C7E6A100738B15 /* FieldValidator.swift */; };
+		37DE78A524C7F40300738B15 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A424C7F40300738B15 /* FieldValidator.swift */; };
+		37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A624C8011400738B15 /* ResGenUtility.swift */; };
+		37DE78AA24C803F500738B15 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 37DE78A924C803F500738B15 /* ShellOut */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +34,8 @@
 		3782F24624C4DDE4008B18C3 /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
 		379792A324C49B5100AA9DB0 /* FileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
 		37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
-		37DE78A024C7E6A100738B15 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
+		37DE78A424C7F40300738B15 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
+		37DE78A624C8011400738B15 /* ResGenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResGenUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3768363E24C87D6F0052FAD5 /* Files in Frameworks */,
+				37DE78AA24C803F500738B15 /* ShellOut in Frameworks */,
 				379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +71,6 @@
 		370E9F4524C3F81C00D1D363 /* RexEdit */ = {
 			isa = PBXGroup;
 			children = (
-				37DE789F24C7E68D00738B15 /* Helpers */,
 				370E9F4C24C3F81D00D1D363 /* Preview Content */,
 				370E9F5024C3F81D00D1D363 /* RexEdit.entitlements */,
 				370E9F4F24C3F81D00D1D363 /* Info.plist */,
@@ -99,7 +104,9 @@
 		379792A224C49B3E00AA9DB0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				37DE78A424C7F40300738B15 /* FieldValidator.swift */,
 				379792A324C49B5100AA9DB0 /* FileUtility.swift */,
+				37DE78A624C8011400738B15 /* ResGenUtility.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -120,14 +127,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		37DE789F24C7E68D00738B15 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				37DE78A024C7E6A100738B15 /* FieldValidator.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +145,8 @@
 			name = RexEdit;
 			packageProductDependencies = (
 				379792A924C4A04D00AA9DB0 /* AEXML */,
+				37DE78A924C803F500738B15 /* ShellOut */,
+				3768363D24C87D6F0052FAD5 /* Files */,
 			);
 			productName = RexEdit;
 			productReference = 370E9F4324C3F81C00D1D363 /* RexEdit.app */;
@@ -176,6 +177,8 @@
 			mainGroup = 370E9F3A24C3F81C00D1D363;
 			packageReferences = (
 				379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */,
+				37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference "ShellOut" */,
+				3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference "Files" */,
 			);
 			productRefGroup = 370E9F4424C3F81C00D1D363 /* Products */;
 			projectDirPath = "";
@@ -204,12 +207,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */,
+				37DE78A524C7F40300738B15 /* FieldValidator.swift in Sources */,
 				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
 				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
 				370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */,
 				370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */,
+				37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */,
 				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
-				37DE78A124C7E6A100738B15 /* FieldValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +407,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
 		379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tadija/AEXML.git";
@@ -411,13 +423,31 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference "ShellOut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/ShellOut.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3768363D24C87D6F0052FAD5 /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
 		379792A924C4A04D00AA9DB0 /* AEXML */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */;
 			productName = AEXML;
+		};
+		37DE78A924C803F500738B15 /* ShellOut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference "ShellOut" */;
+			productName = ShellOut;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

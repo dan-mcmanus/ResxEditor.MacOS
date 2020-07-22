@@ -14,4 +14,5 @@ final class FileData: ObservableObject {
     @Published var resourcesToAdd: [ResourceEntry] = []
     @Published var originalEntries: [ResourceEntry] = []
     @Published var filePath = ""
+    //@Published var folderPath = ""
 }

@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7D0C3B2D-A4AC-4784-BB8C-3FE69262E0B0"
+            uuid = "053BA864-5827-43A3-85A6-0289F2337242"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Rexedit/Services/ResourceFileHelper.swift"
+            filePath = "RexEdit/Services/ResGenUtility.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "writeTo(filePath:fileData:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D91BA506-280A-4AC7-83D2-07033EDB610D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Rexedit/Services/ResourceFileHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "writeTo(filePath:fileData:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "execute(command:arguments:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

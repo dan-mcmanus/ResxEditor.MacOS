@@ -37,7 +37,7 @@ public class FieldValidator<T> : ObservableObject where T : Hashable {
             self.bindValue = self.value
         }
     }
-    private let validator:Validator
+    private let validator: Validator
     
     public var isValid: Bool {
         self.checker.valid
@@ -90,7 +90,7 @@ public struct TextFieldWithValidator : ViewWithFieldValidator {
     var title:String?
     var onCommit: () -> Void = {}
     
-    @ObservedObject var field:FieldValidator<String>
+    @ObservedObject var field: FieldValidator<String>
     
     public init( title: String = "",
                  value: Binding<String>,
@@ -107,11 +107,17 @@ public struct TextFieldWithValidator : ViewWithFieldValidator {
     }
     
     public var body: some View {
-        VStack {
-            TextField( title ?? "", text: $field.value, onCommit: execIfValid(self.onCommit) )
-                .onAppear { // run validation on appear
-                    self.field.doValidate()
-                }
+        ZStack {
+            TextField( "", text: $field.value )
+                //.padding(.all)
+                .border( field.isValid ? Color.clear : Color.red )
+                .onAppear { self.field.doValidate() } // run validation on appear
+            if( !field.isValid  ) {
+                Text( field.errorMessage ?? "" )
+                    .fontWeight(.light)
+                    .font(.footnote)
+                    .foregroundColor(Color.red)
+            }
         }
     }
     

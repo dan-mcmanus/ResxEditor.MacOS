@@ -9,11 +9,10 @@ import SwiftUI
 
 struct ResourceRow: View {
     @EnvironmentObject var fileData: FileData
-    
-    //var fileUtil: FileUtility = FileUtility()
+    @EnvironmentObject var entry: Entry
     
     @State var currentItem: ResourceEntry
-    @State var keyIsValid = false
+    @State var keyIsValid = true
     @State var textIsValid = false
     @State var isLocked = true
     
@@ -26,19 +25,27 @@ struct ResourceRow: View {
             Button("") {
                 isLocked = !isLocked
                 
+                if isLocked {
+                    fileData.resourcesToAdd.append(ResourceEntry(key: currentItem.key, text: currentItem.text, isNew: true))
+                }
             }.overlay(isLocked ? Image(systemName: "lock") : Image(systemName: "lock.open"))
             Spacer()
             
             TextField("Key",
                       text: $currentItem.key,
-                      // onEditingChanged: { (onEditingChanged) in
-                      //                        print(onEditingChanged)
-                      //                      },
+                      onEditingChanged: { (onEditingChanged) in
+                        if !onEditingChanged {
+                            if currentItem.key.isEmpty {
+                                keyIsValid = false
+                            }
+                        }
+                      },
                       onCommit: {
+
                         if currentItem.key.contains(" ") {
                             currentItem.key = currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
                         }
-                      }).disabled(isLocked)
+                      }).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
             Spacer()
             TextField("Value",
                       text: $currentItem.text,
@@ -83,6 +90,9 @@ struct ResourceRow: View {
 
 struct ResourceRow_Previews: PreviewProvider {
     static var previews: some View {
-        ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "")
+        Group {
+            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "")
+            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "")
+        }
     }
 }

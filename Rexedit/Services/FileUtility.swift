@@ -8,6 +8,7 @@
 import Foundation
 import AEXML
 import SwiftUI
+import Files
 
 func parseFile(filePath: String) -> [ResourceEntry] {
     var resources: [ResourceEntry] = []
@@ -172,4 +173,26 @@ class FileUtility {
         }
     }
 
+    static func createTextFile(path: String, name: String, resources: [ResourceEntry] = []) {
+        do {
+            let folder = try Folder(path: path)
+            let file = try folder.createFile(named: name)
+            for entry in resources {
+                try file.write("\(entry.key) = \(entry.text)\r\n")
+            }
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func deleteFile(_ file: String) {
+        do {
+            let file = try File(path: file)
+            try file.delete()
+        } catch  {
+            print(error)
+        }
+    }
 }
+

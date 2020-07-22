@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import ShellOut
 
 
 struct ResourceView: View {
@@ -16,6 +17,8 @@ struct ResourceView: View {
         fileData.resources.append(ResourceEntry(key: "", text: "", isNew: true))
     }
     
+
+    
     var body: some View {
         
         return
@@ -24,29 +27,39 @@ struct ResourceView: View {
                     HStack {
                         Button("+") {
                             addResourceNode()
-                        }
-                        .padding(.leading)
+                        }.padding(.leading)
+                        Spacer()
+                        Button("New Resource File") {
+                            createResxFile(destinationFile: "Resources.resx")
+                        }.padding()
+                        Spacer()
+                        Button("Load file") {
+                            selectFile()
+                            
+                        }.padding(.trailing)
+                    }
+                    HStack {
+                        
                         Spacer()
                         Text("Resource Key")
                         Spacer()
                         Text("Resource Value")
                         Spacer()
                         
-                        Button("Choose file") {
-                            selectFile()
-                            
-                        }.padding(.trailing)
+
                     }.padding(.top)
                     ForEach(fileData.resources) { resource in
                         ResourceRow(currentItem: resource, originalKey: resource.key, originalText: resource.text)
                         
-                    }.textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
                     
                     Spacer()
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
             }
     }
     
+
+
     // https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-directory-picker-in-macos-using-swift-5
     func selectFile() {
         let dialog = NSOpenPanel()
@@ -72,6 +85,34 @@ struct ResourceView: View {
             // User clicked on "Cancel"
             return
         }
+    }
+    
+    func createResxFile(destinationFile: String) {
+        //https://docs.microsoft.com/en-us/dotnet/framework/tools/resgen-exe-resource-file-generator
+        
+        let folder = selectPath()
+        let tempFile = "\(folder!)/temp.txt"
+        FileUtility.createTextFile(path: folder!, name: "temp.txt", resources: fileData.resourcesToAdd)
+        Bash.execute(command: "resgen", arguments: [tempFile, "\(folder!)/\(destinationFile)"])
+        FileUtility.deleteFile(tempFile)
+    }
+    
+    func selectPath() -> String? {
+        let dialog = NSOpenPanel()
+        dialog.title = "Choose a directory"
+        dialog.showsResizeIndicator = true
+        dialog.showsHiddenFiles = false
+        dialog.allowsMultipleSelection = false
+        dialog.canChooseDirectories = true
+        dialog.canChooseFiles = false
+        
+        if dialog.runModal() == NSApplication.ModalResponse.OK {
+            let result = dialog.url
+            return result!.path
+        } else {
+            return nil
+        }
+        
     }
 }
 

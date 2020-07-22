@@ -17,7 +17,7 @@
                BlueprintIdentifier = "370E9F4224C3F81C00D1D363"
                BuildableName = "RexEdit.app"
                BlueprintName = "RexEdit"
-               ReferencedContainer = "container:Rexedit.xcodeproj">
+               ReferencedContainer = "container:RexEdit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "370E9F4224C3F81C00D1D363"
             BuildableName = "RexEdit.app"
             BlueprintName = "RexEdit"
-            ReferencedContainer = "container:Rexedit.xcodeproj">
+            ReferencedContainer = "container:RexEdit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "370E9F4224C3F81C00D1D363"
             BuildableName = "RexEdit.app"
             BlueprintName = "RexEdit"
-            ReferencedContainer = "container:Rexedit.xcodeproj">
+            ReferencedContainer = "container:RexEdit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
