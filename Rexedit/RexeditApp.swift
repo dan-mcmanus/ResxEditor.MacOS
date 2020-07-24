@@ -13,7 +13,6 @@ struct RexEditApp: App {
         WindowGroup {
             ResourceView()
                 .environmentObject(FileData())
-                .environmentObject(Entry())
         }
     }
 }

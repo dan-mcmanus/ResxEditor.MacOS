@@ -7,35 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4624C3F81C00D1D363 /* RexEditApp.swift */; };
-		370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4824C3F81C00D1D363 /* ResourceView.swift */; };
-		370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4A24C3F81D00D1D363 /* Assets.xcassets */; };
-		370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */; };
-		370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F7224C3F8C300D1D363 /* ResourceRow.swift */; };
-		3768363E24C87D6F0052FAD5 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 3768363D24C87D6F0052FAD5 /* Files */; };
-		3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782F24624C4DDE4008B18C3 /* FileData.swift */; };
-		379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379792A324C49B5100AA9DB0 /* FileUtility.swift */; };
-		379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 379792A924C4A04D00AA9DB0 /* AEXML */; };
-		37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */; };
-		37DE78A524C7F40300738B15 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A424C7F40300738B15 /* FieldValidator.swift */; };
-		37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A624C8011400738B15 /* ResGenUtility.swift */; };
-		37DE78AA24C803F500738B15 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 37DE78A924C803F500738B15 /* ShellOut */; };
+		37C2CD2C24CA6EC5005F037E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD2B24CA6EC5005F037E /* AppDelegate.swift */; };
+		37C2CD2E24CA6EC5005F037E /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD2D24CA6EC5005F037E /* EditorView.swift */; };
+		37C2CD3024CA6EC6005F037E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C2CD2F24CA6EC6005F037E /* Assets.xcassets */; };
+		37C2CD3324CA6EC6005F037E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C2CD3224CA6EC6005F037E /* Preview Assets.xcassets */; };
+		37C2CD3624CA6EC6005F037E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C2CD3424CA6EC6005F037E /* Main.storyboard */; };
+		37C2CD4224CA6EC6005F037E /* RexEdit_LegacyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD4124CA6EC6005F037E /* RexEdit_LegacyTests.swift */; };
+		37C2CD4D24CA6EC6005F037E /* RexEdit_LegacyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD4C24CA6EC6005F037E /* RexEdit_LegacyUITests.swift */; };
+		37C2CD5924CA709B005F037E /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD5824CA709B005F037E /* FileData.swift */; };
+		37C2CD5B24CA70AD005F037E /* ResGenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD5A24CA70AD005F037E /* ResGenUtility.swift */; };
+		37C2CD5D24CA70B8005F037E /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD5C24CA70B8005F037E /* FileUtility.swift */; };
+		37C2CD5F24CA7103005F037E /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD5E24CA7103005F037E /* ResourceRow.swift */; };
+		37C2CD6124CA7114005F037E /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2CD6024CA7114005F037E /* ResourceEntry.swift */; };
+		7284418D3CE9200CF7C0867F /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728447AD0321FFE0C5F606CD /* FileData.swift */; };
+		7284429395264F1A1D255D91 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728440DFB84056DE94E7E801 /* ResourceEntry.swift */; };
+		7284436DBB02EADBA24FE61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 728446E25D9598E6AF304D0A /* Assets.xcassets */; };
+		728446E66F2BE3716200F477 /* ResGenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72844FB3202AAE34AC5E53CC /* ResGenUtility.swift */; };
+		72844899F350655893EEFF96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7284436B01ACA7C250A42F51 /* Preview Assets.xcassets */; };
+		72844BF6DF3F6C35AB50C267 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72844D2B3C805829A20BC9A7 /* ResourceRow.swift */; };
+		72844BFBB0FD7D8E57E75FC0 /* RexEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284489042EC4C128931261A /* RexEditApp.swift */; };
+		72844CD8E5AFDB58FC162212 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728444166E36738FDE57DE86 /* FileUtility.swift */; };
+		72844D94AB47505576C41C2E /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72844369FD9A52240CFA81D1 /* ResourceView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		37C2CD3E24CA6EC6005F037E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 370E9F3B24C3F81C00D1D363 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37C2CD2824CA6EC5005F037E;
+			remoteInfo = RexEdit.Legacy;
+		};
+		37C2CD4924CA6EC6005F037E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 370E9F3B24C3F81C00D1D363 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37C2CD2824CA6EC5005F037E;
+			remoteInfo = RexEdit.Legacy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		370E9F4324C3F81C00D1D363 /* RexEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RexEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		370E9F4624C3F81C00D1D363 /* RexEditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexEditApp.swift; sourceTree = "<group>"; };
-		370E9F4824C3F81C00D1D363 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
-		370E9F4A24C3F81D00D1D363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		370E9F4F24C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		370E9F5024C3F81D00D1D363 /* RexEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexEdit.entitlements; sourceTree = "<group>"; };
-		370E9F7224C3F8C300D1D363 /* ResourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRow.swift; sourceTree = "<group>"; };
-		3782F24624C4DDE4008B18C3 /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
-		379792A324C49B5100AA9DB0 /* FileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
-		37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
-		37DE78A424C7F40300738B15 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
-		37DE78A624C8011400738B15 /* ResGenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResGenUtility.swift; sourceTree = "<group>"; };
+		37C2CD2B24CA6EC5005F037E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		37C2CD2D24CA6EC5005F037E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		37C2CD2F24CA6EC6005F037E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37C2CD3224CA6EC6005F037E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		37C2CD3524CA6EC6005F037E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		37C2CD3724CA6EC6005F037E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37C2CD3824CA6EC6005F037E /* RexEdit_Legacy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexEdit_Legacy.entitlements; sourceTree = "<group>"; };
+		37C2CD4124CA6EC6005F037E /* RexEdit_LegacyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexEdit_LegacyTests.swift; sourceTree = "<group>"; };
+		37C2CD4324CA6EC6005F037E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37C2CD4C24CA6EC6005F037E /* RexEdit_LegacyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexEdit_LegacyUITests.swift; sourceTree = "<group>"; };
+		37C2CD4E24CA6EC6005F037E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37C2CD5824CA709B005F037E /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
+		37C2CD5A24CA70AD005F037E /* ResGenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResGenUtility.swift; sourceTree = "<group>"; };
+		37C2CD5C24CA70B8005F037E /* FileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
+		37C2CD5E24CA7103005F037E /* ResourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRow.swift; sourceTree = "<group>"; };
+		37C2CD6024CA7114005F037E /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
+		728440916F28A35F97F51815 /* RexEdit.LegacyTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file.xctest; name = RexEdit.LegacyTests.xctest; path = "../../Library/Caches/JetBrains/AppCode2020.1/DerivedData/RexEdit-cxcoshmuwnsdsjdmefvhnyovzgoj/Build/Products/Debug/RexEdit.LegacyTests.xctest"; sourceTree = "<group>"; };
+		728440DFB84056DE94E7E801 /* ResourceEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
+		72844369FD9A52240CFA81D1 /* ResourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
+		7284436B01ACA7C250A42F51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		728444166E36738FDE57DE86 /* FileUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
+		728446B285F3A5A59DB14171 /* RexEdit.LegacyUITests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file.xctest; name = RexEdit.LegacyUITests.xctest; path = "../../Library/Caches/JetBrains/AppCode2020.1/DerivedData/RexEdit-cxcoshmuwnsdsjdmefvhnyovzgoj/Build/Products/Debug/RexEdit.LegacyUITests.xctest"; sourceTree = "<group>"; };
+		728446C5FADB21467403E86F /* RexEdit.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = RexEdit.app; path = "../../Library/Caches/JetBrains/AppCode2020.1/DerivedData/RexEdit-cxcoshmuwnsdsjdmefvhnyovzgoj/Build/Products/Debug/RexEdit.app"; sourceTree = "<group>"; };
+		728446E25D9598E6AF304D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		728447AD0321FFE0C5F606CD /* FileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
+		72844844F86EA42C371D2B98 /* RexEdit.Legacy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = RexEdit.Legacy.app; path = "../../Library/Caches/JetBrains/AppCode2020.1/DerivedData/RexEdit-cxcoshmuwnsdsjdmefvhnyovzgoj/Build/Products/Debug/RexEdit.Legacy.app"; sourceTree = "<group>"; };
+		7284489042EC4C128931261A /* RexEditApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RexEditApp.swift; sourceTree = "<group>"; };
+		72844D2B3C805829A20BC9A7 /* ResourceRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceRow.swift; sourceTree = "<group>"; };
+		72844FAC02388A6597964EB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		72844FAE2849307A4B666D08 /* RexEdit.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = RexEdit.entitlements; sourceTree = "<group>"; };
+		72844FB3202AAE34AC5E53CC /* ResGenUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResGenUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,9 +86,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3768363E24C87D6F0052FAD5 /* Files in Frameworks */,
-				37DE78AA24C803F500738B15 /* ShellOut in Frameworks */,
-				379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD2624CA6EC5005F037E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD3A24CA6EC6005F037E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD4524CA6EC6005F037E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,76 +116,135 @@
 		370E9F3A24C3F81C00D1D363 = {
 			isa = PBXGroup;
 			children = (
-				370E9F4524C3F81C00D1D363 /* RexEdit */,
-				370E9F4424C3F81C00D1D363 /* Products */,
+				72844B6724BBCBD9A1C6A11B /* RexEdit */,
+				37C2CD2A24CA6EC5005F037E /* RexEdit.Legacy */,
+				37C2CD4024CA6EC6005F037E /* RexEdit.LegacyTests */,
+				37C2CD4B24CA6EC6005F037E /* RexEdit.LegacyUITests */,
+				37C2CD6824CA74BA005F037E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		370E9F4424C3F81C00D1D363 /* Products */ = {
+		37C2CD2A24CA6EC5005F037E /* RexEdit.Legacy */ = {
 			isa = PBXGroup;
 			children = (
-				370E9F4324C3F81C00D1D363 /* RexEdit.app */,
+				37C2CD2B24CA6EC5005F037E /* AppDelegate.swift */,
+				37C2CD2D24CA6EC5005F037E /* EditorView.swift */,
+				37C2CD2F24CA6EC6005F037E /* Assets.xcassets */,
+				37C2CD3424CA6EC6005F037E /* Main.storyboard */,
+				37C2CD3724CA6EC6005F037E /* Info.plist */,
+				37C2CD3824CA6EC6005F037E /* RexEdit_Legacy.entitlements */,
+				37C2CD3124CA6EC6005F037E /* Preview Content */,
+				37C2CD5824CA709B005F037E /* FileData.swift */,
+				37C2CD5A24CA70AD005F037E /* ResGenUtility.swift */,
+				37C2CD5C24CA70B8005F037E /* FileUtility.swift */,
+				37C2CD5E24CA7103005F037E /* ResourceRow.swift */,
+				37C2CD6024CA7114005F037E /* ResourceEntry.swift */,
 			);
-			name = Products;
+			path = RexEdit.Legacy;
 			sourceTree = "<group>";
 		};
-		370E9F4524C3F81C00D1D363 /* RexEdit */ = {
+		37C2CD3124CA6EC6005F037E /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				370E9F4C24C3F81D00D1D363 /* Preview Content */,
-				370E9F5024C3F81D00D1D363 /* RexEdit.entitlements */,
-				370E9F4F24C3F81D00D1D363 /* Info.plist */,
-				370E9F4A24C3F81D00D1D363 /* Assets.xcassets */,
-				370E9F4624C3F81C00D1D363 /* RexEditApp.swift */,
-				370E9F4824C3F81C00D1D363 /* ResourceView.swift */,
-				37A6B23C24C40E2700AEEBA7 /* Data */,
-				37A6B21824C3FD2D00AEEBA7 /* Models */,
-				379792A224C49B3E00AA9DB0 /* Services */,
-				370E9F7424C3FBA400D1D363 /* SupportingViews */,
-			);
-			path = RexEdit;
-			sourceTree = "<group>";
-		};
-		370E9F4C24C3F81D00D1D363 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */,
+				37C2CD3224CA6EC6005F037E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		370E9F7424C3FBA400D1D363 /* SupportingViews */ = {
+		37C2CD4024CA6EC6005F037E /* RexEdit.LegacyTests */ = {
 			isa = PBXGroup;
 			children = (
-				370E9F7224C3F8C300D1D363 /* ResourceRow.swift */,
+				37C2CD4124CA6EC6005F037E /* RexEdit_LegacyTests.swift */,
+				37C2CD4324CA6EC6005F037E /* Info.plist */,
 			);
-			path = SupportingViews;
+			path = RexEdit.LegacyTests;
 			sourceTree = "<group>";
 		};
-		379792A224C49B3E00AA9DB0 /* Services */ = {
+		37C2CD4B24CA6EC6005F037E /* RexEdit.LegacyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				37DE78A424C7F40300738B15 /* FieldValidator.swift */,
-				379792A324C49B5100AA9DB0 /* FileUtility.swift */,
-				37DE78A624C8011400738B15 /* ResGenUtility.swift */,
+				37C2CD4C24CA6EC6005F037E /* RexEdit_LegacyUITests.swift */,
+				37C2CD4E24CA6EC6005F037E /* Info.plist */,
+			);
+			path = RexEdit.LegacyUITests;
+			sourceTree = "<group>";
+		};
+		37C2CD6824CA74BA005F037E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		728443AE6DC3BC03E33AC249 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				728444166E36738FDE57DE86 /* FileUtility.swift */,
+				72844FB3202AAE34AC5E53CC /* ResGenUtility.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		37A6B21824C3FD2D00AEEBA7 /* Models */ = {
+		728444BE42063741FC6A1C05 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */,
+				7284436B01ACA7C250A42F51 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		728448AA834C7277C193EDDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				728440DFB84056DE94E7E801 /* ResourceEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		37A6B23C24C40E2700AEEBA7 /* Data */ = {
+		728449BE9DBAD87036984FA8 /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
-				3782F24624C4DDE4008B18C3 /* FileData.swift */,
+				72844D2B3C805829A20BC9A7 /* ResourceRow.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		72844AC5A1F12A6782EBEDDB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				728447AD0321FFE0C5F606CD /* FileData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		72844B6724BBCBD9A1C6A11B /* RexEdit */ = {
+			isa = PBXGroup;
+			children = (
+				728444BE42063741FC6A1C05 /* Preview Content */,
+				72844FAE2849307A4B666D08 /* RexEdit.entitlements */,
+				72844FAC02388A6597964EB2 /* Info.plist */,
+				728446E25D9598E6AF304D0A /* Assets.xcassets */,
+				7284489042EC4C128931261A /* RexEditApp.swift */,
+				72844369FD9A52240CFA81D1 /* ResourceView.swift */,
+				72844AC5A1F12A6782EBEDDB /* Data */,
+				728448AA834C7277C193EDDC /* Models */,
+				728443AE6DC3BC03E33AC249 /* Services */,
+				728449BE9DBAD87036984FA8 /* SupportingViews */,
+				72844F166303C03438C9904F /* Products */,
+			);
+			path = RexEdit;
+			sourceTree = "<group>";
+		};
+		72844F166303C03438C9904F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				728446C5FADB21467403E86F /* RexEdit.app */,
+				72844844F86EA42C371D2B98 /* RexEdit.Legacy.app */,
+				728440916F28A35F97F51815 /* RexEdit.LegacyTests.xctest */,
+				728446B285F3A5A59DB14171 /* RexEdit.LegacyUITests.xctest */,
+			);
+			name = Products;
+			path = ../../Rexedit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,13 +264,67 @@
 			);
 			name = RexEdit;
 			packageProductDependencies = (
-				379792A924C4A04D00AA9DB0 /* AEXML */,
-				37DE78A924C803F500738B15 /* ShellOut */,
-				3768363D24C87D6F0052FAD5 /* Files */,
+				379792A924C4A04D00AA9DB0 /* XCSwiftPackageProductDependency */,
+				37DE78A924C803F500738B15 /* XCSwiftPackageProductDependency */,
+				3768363D24C87D6F0052FAD5 /* XCSwiftPackageProductDependency */,
 			);
 			productName = RexEdit;
-			productReference = 370E9F4324C3F81C00D1D363 /* RexEdit.app */;
 			productType = "com.apple.product-type.application";
+		};
+		37C2CD2824CA6EC5005F037E /* RexEdit.Legacy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C2CD5524CA6EC6005F037E /* Build configuration list for PBXNativeTarget "RexEdit.Legacy" */;
+			buildPhases = (
+				37C2CD2524CA6EC5005F037E /* Sources */,
+				37C2CD2624CA6EC5005F037E /* Frameworks */,
+				37C2CD2724CA6EC5005F037E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RexEdit.Legacy;
+			packageProductDependencies = (
+				37C2CD6924CA74BA005F037E /* XCSwiftPackageProductDependency */,
+				37C2CD6B24CA74BF005F037E /* XCSwiftPackageProductDependency */,
+				37C2CD6D24CA74C4005F037E /* XCSwiftPackageProductDependency */,
+			);
+			productName = RexEdit.Legacy;
+			productType = "com.apple.product-type.application";
+		};
+		37C2CD3C24CA6EC6005F037E /* RexEdit.LegacyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C2CD5624CA6EC6005F037E /* Build configuration list for PBXNativeTarget "RexEdit.LegacyTests" */;
+			buildPhases = (
+				37C2CD3924CA6EC6005F037E /* Sources */,
+				37C2CD3A24CA6EC6005F037E /* Frameworks */,
+				37C2CD3B24CA6EC6005F037E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37C2CD3F24CA6EC6005F037E /* PBXTargetDependency */,
+			);
+			name = RexEdit.LegacyTests;
+			productName = RexEdit.LegacyTests;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		37C2CD4724CA6EC6005F037E /* RexEdit.LegacyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C2CD5724CA6EC6005F037E /* Build configuration list for PBXNativeTarget "RexEdit.LegacyUITests" */;
+			buildPhases = (
+				37C2CD4424CA6EC6005F037E /* Sources */,
+				37C2CD4524CA6EC6005F037E /* Frameworks */,
+				37C2CD4624CA6EC6005F037E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37C2CD4A24CA6EC6005F037E /* PBXTargetDependency */,
+			);
+			name = RexEdit.LegacyUITests;
+			productName = RexEdit.LegacyUITests;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -164,6 +338,17 @@
 					370E9F4224C3F81C00D1D363 = {
 						CreatedOnToolsVersion = 12.0;
 					};
+					37C2CD2824CA6EC5005F037E = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					37C2CD3C24CA6EC6005F037E = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 37C2CD2824CA6EC5005F037E;
+					};
+					37C2CD4724CA6EC6005F037E = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 37C2CD2824CA6EC5005F037E;
+					};
 				};
 			};
 			buildConfigurationList = 370E9F3E24C3F81C00D1D363 /* Build configuration list for PBXProject "RexEdit" */;
@@ -176,15 +361,18 @@
 			);
 			mainGroup = 370E9F3A24C3F81C00D1D363;
 			packageReferences = (
-				379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */,
-				37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference "ShellOut" */,
-				3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference "Files" */,
+				379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference */,
+				37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference */,
+				3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference */,
 			);
-			productRefGroup = 370E9F4424C3F81C00D1D363 /* Products */;
+			productRefGroup = 72844F166303C03438C9904F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				370E9F4224C3F81C00D1D363 /* RexEdit */,
+				37C2CD2824CA6EC5005F037E /* RexEdit.Legacy */,
+				37C2CD3C24CA6EC6005F037E /* RexEdit.LegacyTests */,
+				37C2CD4724CA6EC6005F037E /* RexEdit.LegacyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,8 +382,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */,
-				370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */,
+				72844899F350655893EEFF96 /* Preview Assets.xcassets in Resources */,
+				7284436DBB02EADBA24FE61A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD2724CA6EC5005F037E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C2CD3624CA6EC6005F037E /* Main.storyboard in Resources */,
+				37C2CD3324CA6EC6005F037E /* Preview Assets.xcassets in Resources */,
+				37C2CD3024CA6EC6005F037E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD3B24CA6EC6005F037E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD4624CA6EC6005F037E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,18 +418,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */,
-				37DE78A524C7F40300738B15 /* FieldValidator.swift in Sources */,
-				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
-				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
-				370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */,
-				370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */,
-				37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */,
-				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
+				72844BFBB0FD7D8E57E75FC0 /* RexEditApp.swift in Sources */,
+				72844D94AB47505576C41C2E /* ResourceView.swift in Sources */,
+				7284418D3CE9200CF7C0867F /* FileData.swift in Sources */,
+				7284429395264F1A1D255D91 /* ResourceEntry.swift in Sources */,
+				72844CD8E5AFDB58FC162212 /* FileUtility.swift in Sources */,
+				728446E66F2BE3716200F477 /* ResGenUtility.swift in Sources */,
+				72844BF6DF3F6C35AB50C267 /* ResourceRow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD2524CA6EC5005F037E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C2CD2E24CA6EC5005F037E /* EditorView.swift in Sources */,
+				37C2CD2C24CA6EC5005F037E /* AppDelegate.swift in Sources */,
+				37C2CD5F24CA7103005F037E /* ResourceRow.swift in Sources */,
+				37C2CD5B24CA70AD005F037E /* ResGenUtility.swift in Sources */,
+				37C2CD5924CA709B005F037E /* FileData.swift in Sources */,
+				37C2CD5D24CA70B8005F037E /* FileUtility.swift in Sources */,
+				37C2CD6124CA7114005F037E /* ResourceEntry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD3924CA6EC6005F037E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C2CD4224CA6EC6005F037E /* RexEdit_LegacyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37C2CD4424CA6EC6005F037E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C2CD4D24CA6EC6005F037E /* RexEdit_LegacyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37C2CD3F24CA6EC6005F037E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37C2CD2824CA6EC5005F037E /* RexEdit.Legacy */;
+			targetProxy = 37C2CD3E24CA6EC6005F037E /* PBXContainerItemProxy */;
+		};
+		37C2CD4A24CA6EC6005F037E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37C2CD2824CA6EC5005F037E /* RexEdit.Legacy */;
+			targetProxy = 37C2CD4924CA6EC6005F037E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		37C2CD3424CA6EC6005F037E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37C2CD3524CA6EC6005F037E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		370E9F6724C3F81D00D1D363 /* Debug */ = {
@@ -383,6 +648,138 @@
 			};
 			name = Release;
 		};
+		37C2CD4F24CA6EC6005F037E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RexEdit.Legacy/RexEdit_Legacy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"RexEdit.Legacy/Preview Content\"";
+				DEVELOPMENT_TEAM = 2M498ARC87;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RexEdit.Legacy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmcdev.RexEdit-Legacy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		37C2CD5024CA6EC6005F037E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RexEdit.Legacy/RexEdit_Legacy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"RexEdit.Legacy/Preview Content\"";
+				DEVELOPMENT_TEAM = 2M498ARC87;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RexEdit.Legacy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmcdev.RexEdit-Legacy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		37C2CD5124CA6EC6005F037E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2M498ARC87;
+				INFOPLIST_FILE = RexEdit.LegacyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmcdev.RexEdit-LegacyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RexEdit.Legacy.app/Contents/MacOS/RexEdit.Legacy";
+			};
+			name = Debug;
+		};
+		37C2CD5224CA6EC6005F037E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2M498ARC87;
+				INFOPLIST_FILE = RexEdit.LegacyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmcdev.RexEdit-LegacyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RexEdit.Legacy.app/Contents/MacOS/RexEdit.Legacy";
+			};
+			name = Release;
+		};
+		37C2CD5324CA6EC6005F037E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2M498ARC87;
+				INFOPLIST_FILE = RexEdit.LegacyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmcdev.RexEdit-LegacyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = RexEdit.Legacy;
+			};
+			name = Debug;
+		};
+		37C2CD5424CA6EC6005F037E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2M498ARC87;
+				INFOPLIST_FILE = RexEdit.LegacyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmcdev.RexEdit-LegacyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = RexEdit.Legacy;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -404,10 +801,37 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		37C2CD5524CA6EC6005F037E /* Build configuration list for PBXNativeTarget "RexEdit.Legacy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C2CD4F24CA6EC6005F037E /* Debug */,
+				37C2CD5024CA6EC6005F037E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37C2CD5624CA6EC6005F037E /* Build configuration list for PBXNativeTarget "RexEdit.LegacyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C2CD5124CA6EC6005F037E /* Debug */,
+				37C2CD5224CA6EC6005F037E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37C2CD5724CA6EC6005F037E /* Build configuration list for PBXNativeTarget "RexEdit.LegacyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37C2CD5324CA6EC6005F037E /* Debug */,
+				37C2CD5424CA6EC6005F037E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference "Files" */ = {
+		3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Files";
 			requirement = {
@@ -415,7 +839,7 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */ = {
+		379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tadija/AEXML.git";
 			requirement = {
@@ -423,7 +847,7 @@
 				minimumVersion = 4.5.0;
 			};
 		};
-		37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference "ShellOut" */ = {
+		37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/ShellOut.git";
 			requirement = {
@@ -434,19 +858,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3768363D24C87D6F0052FAD5 /* Files */ = {
+		3768363D24C87D6F0052FAD5 /* XCSwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference "Files" */;
+			package = 3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference */;
 			productName = Files;
 		};
-		379792A924C4A04D00AA9DB0 /* AEXML */ = {
+		379792A924C4A04D00AA9DB0 /* XCSwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference "AEXML" */;
+			package = 379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference */;
 			productName = AEXML;
 		};
-		37DE78A924C803F500738B15 /* ShellOut */ = {
+		37C2CD6924CA74BA005F037E /* XCSwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference "ShellOut" */;
+			package = 379792A824C4A04D00AA9DB0 /* XCRemoteSwiftPackageReference */;
+			productName = AEXML;
+		};
+		37C2CD6B24CA74BF005F037E /* XCSwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference */;
+			productName = ShellOut;
+		};
+		37C2CD6D24CA74C4005F037E /* XCSwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3768363C24C87D6F0052FAD5 /* XCRemoteSwiftPackageReference */;
+			productName = Files;
+		};
+		37DE78A924C803F500738B15 /* XCSwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37DE78A824C803F500738B15 /* XCRemoteSwiftPackageReference */;
 			productName = ShellOut;
 		};
 /* End XCSwiftPackageProductDependency section */

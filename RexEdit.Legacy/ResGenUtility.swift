@@ -11,25 +11,25 @@ protocol CommandExecuting {
 }
 
 struct Bash: CommandExecuting {
-    
+
     // MARK: - CommandExecuting
-    
+
     func run(commandName: String, arguments: [String] = []) -> String? {
-        guard var bashCommand = run(command: "/bin/bash" , arguments: ["-l", "-c", "which \(commandName)"]) else { 
+        guard var bashCommand = run(command: "/bin/bash" , arguments: ["-l", "-c", "which \(commandName)"]) else {
             return "\(commandName) not found" }
         bashCommand = bashCommand.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         return run(command: bashCommand, arguments: arguments)
     }
-    
+
     // MARK: Private
-    
+
     private func run(command: String, arguments: [String] = []) -> String? {
         let process = Process()
         process.executableURL = URL(fileURLWithPath: command)
         process.arguments = arguments
         let outputPipe = Pipe()
         process.standardOutput = outputPipe
-        
+
         do {
             try process.run()
         } catch  {
@@ -40,10 +40,10 @@ struct Bash: CommandExecuting {
         let output = String(decoding: outputData, as: UTF8.self)
         return output
     }
-    
+
     static func execute(command: String, arguments: [String] = []) {
         let bash: CommandExecuting = Bash()
-        
+
         if let lsOutput = bash.run(commandName: "resgen", arguments: arguments) {
             print(lsOutput)
         } else {

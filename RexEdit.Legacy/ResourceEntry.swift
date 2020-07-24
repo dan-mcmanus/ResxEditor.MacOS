@@ -12,11 +12,11 @@ struct ResourceEntry {
     var key = ""
     var text = ""
     var isNew: Bool
-    
+
     init(key: String, text: String, isNew: Bool) {
         self.key = key
         self.text = text
         self.isNew = isNew
     }
-  
+
 }
