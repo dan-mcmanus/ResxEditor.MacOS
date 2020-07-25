@@ -10,26 +10,7 @@ import AEXML
 import SwiftUI
 import Files
 
-func parseFile(filePath: String) -> [ResourceEntry] {
-    var resources: [ResourceEntry] = []
-    guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
-        return resources
-    }
-    
-    do {
-        let xmlDoc = try AEXMLDocument(xml: data)
-        
-        if let entries = xmlDoc.root["data"].all {
-            for entry in entries {
-                resources.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
-            }
-        }
-        
-    } catch  {
-        print("\(error)")
-    }
-    return resources
-}
+
 func writeTo(filePath: String, entry: ResourceEntry) {
     guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
         return
@@ -55,27 +36,24 @@ func writeTo(filePath: String, entry: ResourceEntry) {
 
 class FileUtility {
     
-    func parseFile(filePath: String) -> [String: String] {
-        var resources: [String: String] = [:]
-        
+    static func parseFile(filePath: String) -> [ResourceEntry] {
+        var resources: [ResourceEntry] = []
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
             return resources
         }
-
+        
         do {
             let xmlDoc = try AEXMLDocument(xml: data)
             
             if let entries = xmlDoc.root["data"].all {
                 for entry in entries {
-                    resources.updateValue(entry["value"].string, forKey: entry.attributes["name"]!)
-                    
+                    resources.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
                 }
             }
-
+            
         } catch  {
             print("\(error)")
         }
-        
         return resources
     }
     

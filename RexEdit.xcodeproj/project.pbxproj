@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4624C3F81C00D1D363 /* RexEditApp.swift */; };
-		370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4824C3F81C00D1D363 /* ResourceView.swift */; };
+		370E9F4924C3F81C00D1D363 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F4824C3F81C00D1D363 /* EditorView.swift */; };
 		370E9F4B24C3F81D00D1D363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4A24C3F81D00D1D363 /* Assets.xcassets */; };
 		370E9F4E24C3F81D00D1D363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */; };
 		370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F7224C3F8C300D1D363 /* ResourceRow.swift */; };
@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		370E9F4324C3F81C00D1D363 /* RexEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RexEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		370E9F4624C3F81C00D1D363 /* RexEditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexEditApp.swift; sourceTree = "<group>"; };
-		370E9F4824C3F81C00D1D363 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
+		370E9F4824C3F81C00D1D363 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		370E9F4A24C3F81D00D1D363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370E9F4D24C3F81D00D1D363 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		370E9F4F24C3F81D00D1D363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				370E9F4F24C3F81D00D1D363 /* Info.plist */,
 				370E9F4A24C3F81D00D1D363 /* Assets.xcassets */,
 				370E9F4624C3F81C00D1D363 /* RexEditApp.swift */,
-				370E9F4824C3F81C00D1D363 /* ResourceView.swift */,
+				370E9F4824C3F81C00D1D363 /* EditorView.swift */,
 				37A6B23C24C40E2700AEEBA7 /* Data */,
 				37A6B21824C3FD2D00AEEBA7 /* Models */,
 				379792A224C49B3E00AA9DB0 /* Services */,
@@ -210,7 +210,7 @@
 				37DE78A524C7F40300738B15 /* FieldValidator.swift in Sources */,
 				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
 				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
-				370E9F4924C3F81C00D1D363 /* ResourceView.swift in Sources */,
+				370E9F4924C3F81C00D1D363 /* EditorView.swift in Sources */,
 				370E9F4724C3F81C00D1D363 /* RexEditApp.swift in Sources */,
 				37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */,
 				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
@@ -355,6 +355,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -379,6 +380,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmcdev.RexEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

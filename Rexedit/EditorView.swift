@@ -1,5 +1,5 @@
 //
-//  ResourceView.swift
+//  EditorView.swift
 //  Rexedit
 //
 //  Created by Daniel McManus on 7/18/20.
@@ -10,7 +10,7 @@ import Foundation
 import ShellOut
 
 
-struct ResourceView: View {
+struct EditorView: View {
     @EnvironmentObject var fileData: FileData
     
     func addResourceNode() {
@@ -48,7 +48,7 @@ struct ResourceView: View {
                         
 
                     }.padding(.top)
-                    ForEach(fileData.resources) { resource in
+                    ForEach(fileData.resources, id: \.self.key) { resource in
                         ResourceRow(currentItem: resource, originalKey: resource.key, originalText: resource.text)
                         
                     }
@@ -77,7 +77,7 @@ struct ResourceView: View {
                 fileData.filePath = result!.path
                 fileData.resources.removeAll()
                 
-                fileData.resources = parseFile(filePath: fileData.filePath)
+                fileData.resources = FileUtility.parseFile(filePath: fileData.filePath)
                 fileData.resources = fileData.resources.sorted(by: { $0.key.lowercased() < $1.key.lowercased() })
             }
             
@@ -117,8 +117,8 @@ struct ResourceView: View {
 }
 
 
-struct ResourceView_Previews: PreviewProvider {
+struct EditorView_Previews: PreviewProvider {
     static var previews: some View {
-        ResourceView().environmentObject(FileData())
+        EditorView().environmentObject(FileData())
     }
 }

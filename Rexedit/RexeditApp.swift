@@ -11,9 +11,8 @@ import SwiftUI
 struct RexEditApp: App {
     var body: some Scene {
         WindowGroup {
-            ResourceView()
+            EditorView()
                 .environmentObject(FileData())
-                .environmentObject(Entry())
         }
     }
 }

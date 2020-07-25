@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ResourceRow: View {
     @EnvironmentObject var fileData: FileData
-    @EnvironmentObject var entry: Entry
     
     @State var currentItem: ResourceEntry
     @State var keyIsValid = true
@@ -22,13 +21,19 @@ struct ResourceRow: View {
     var body: some View {
         return HStack {
             Spacer()
-            Button("") {
+            Button(isLocked ? "edit" : "save") {
                 isLocked = !isLocked
-                
                 if isLocked {
-                    fileData.resourcesToAdd.append(ResourceEntry(key: currentItem.key, text: currentItem.text, isNew: true))
+                    save()
                 }
-            }.overlay(isLocked ? Image(systemName: "lock") : Image(systemName: "lock.open"))
+            }
+            //Button("") {
+           //     isLocked = !isLocked
+                
+//                if isLocked {
+//                    fileData.resourcesToAdd.append(ResourceEntry(key: currentItem.key, text: currentItem.text, isNew: true))
+//                }
+            //}
             Spacer()
             
             TextField("Key",
@@ -54,24 +59,25 @@ struct ResourceRow: View {
                       }).disabled(isLocked)
             Spacer()
 
-            
-            
-            Button("save") {
-                if originalKey != currentItem.key || originalText != currentItem.text {
-                    if currentItem.isNew {
-                        FileUtility.writeTo(filePath: fileData.filePath, entry: currentItem)
-                    } else {
-                        FileUtility.updateEntry(filePath: fileData.filePath, originalKey: originalKey,
-                                                originalText: originalText, updatedEntry: currentItem)
-                    }
-                    
-                    isLocked = true
-                }
-                
-            }.disabled(isLocked)
-            Spacer()
         }
         
+        
+    }
+    
+    func save() {
+        if originalKey != currentItem.key || originalText != currentItem.text {
+            if currentItem.isNew {
+                FileUtility.writeTo(filePath: fileData.filePath, entry: currentItem)
+            } else {
+                FileUtility.updateEntry(filePath: fileData.filePath, originalKey: originalKey,
+                                        originalText: originalText, updatedEntry: currentItem)
+            }
+            
+            isLocked = true
+        }
+    }
+    
+    func update() {
         
     }
     
@@ -93,8 +99,7 @@ struct ResourceRow: View {
 struct ResourceRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "")
-            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "")
+            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "").environmentObject(FileData())
         }
     }
 }

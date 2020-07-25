@@ -8,8 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ResourceEntry: Identifiable {
-    let id = UUID()
+struct ResourceEntry {
     var key = ""
     var text = ""
     var isNew: Bool
@@ -20,9 +19,4 @@ struct ResourceEntry: Identifiable {
         self.isNew = isNew
     }
   
-}
-
-class Entry: ObservableObject {
-    @Published var key: String = ""
-    @Published var value: String = ""
 }
