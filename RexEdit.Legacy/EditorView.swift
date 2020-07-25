@@ -20,15 +20,15 @@ struct EditorView: View {
             VStack {
                 HStack {
                     Button("+") {
-                        addResourceNode()
+                        self.addResourceNode()
                     }.padding(.leading)
                     Spacer()
                     Button("New Resource File") {
-                        createResxFile(destinationFile: "Resources.resx")
+                        self.createResxFile(destinationFile: "Resources.resx")
                     }.padding()
                     Spacer()
                     Button("Load file") {
-                        selectFile()
+                        self.selectFile()
 
                     }.padding(.trailing)
                 }

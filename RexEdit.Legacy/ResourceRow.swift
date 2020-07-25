@@ -22,17 +22,17 @@ struct ResourceRow: View {
         HStack {
             Spacer()
             Button(isLocked ? "edit" : "save") {
-                isLocked = !isLocked
-                if isLocked {
-                    fileData.resourcesToAdd.append(ResourceEntry(key: currentItem.key, text: currentItem.text, isNew: true))
-                    if originalKey != currentItem.key || originalText != currentItem.text {
-                        if currentItem.isNew {
-                            FileUtility.writeTo(filePath: fileData.filePath, entry: currentItem)
+                self.isLocked = !self.isLocked
+                if self.isLocked {
+                    self.fileData.resourcesToAdd.append(ResourceEntry(key: self.currentItem.key, text: self.currentItem.text, isNew: true))
+                    if self.originalKey != self.currentItem.key || self.originalText != self.currentItem.text {
+                        if self.currentItem.isNew {
+                            FileUtility.writeTo(filePath: self.fileData.filePath, entry: self.currentItem)
                         } else {
-                            FileUtility.updateEntry(filePath: fileData.filePath, originalKey: originalKey,
-                                    originalText: originalText, updatedEntry: currentItem)
+                            FileUtility.updateEntry(filePath: self.fileData.filePath, originalKey: self.originalKey,
+                                    originalText: self.originalText, updatedEntry: self.currentItem)
                         }
-                        isLocked = true
+                        self.isLocked = true
                     }
                 }
             }
@@ -42,15 +42,15 @@ struct ResourceRow: View {
                     text: $currentItem.key,
                     onEditingChanged: { (onEditingChanged) in
                         if !onEditingChanged {
-                            if currentItem.key.isEmpty {
-                                keyIsValid = false
+                            if self.currentItem.key.isEmpty {
+                                self.keyIsValid = false
                             }
                         }
                     },
                     onCommit: {
 
-                        if currentItem.key.contains(" ") {
-                            currentItem.key = currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
+                        if self.currentItem.key.contains(" ") {
+                            self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
                         }
                     }).disabled(isLocked)
                     .border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
@@ -59,7 +59,7 @@ struct ResourceRow: View {
             TextField("Value",
                     text: $currentItem.text,
                     onCommit: {
-                        validateText(text: currentItem.text)
+                        self.validateText(text: self.currentItem.text)
                     }).disabled(isLocked)
 
             Spacer()
