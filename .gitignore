@@ -67,3 +67,14 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 .DS_Store
+
+# jetbrains
+.idea/*
+xcdebugger/*
+xcuserdatad/*
+xcuserdata/*
+*.xcbkptlist
+
+xcshemes/*
+
+xcschememanagement.plist

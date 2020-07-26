@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ResourceRow: View {
-    @EnvironmentObject var fileData: FileData
-    
+    //@EnvironmentObject var fileData: FileData
+    @EnvironmentObject var appData: AppData
     @State var currentItem: ResourceEntry
     @State var keyIsValid = true
     @State var textIsValid = false
@@ -27,13 +27,6 @@ struct ResourceRow: View {
                     save()
                 }
             }
-            //Button("") {
-           //     isLocked = !isLocked
-                
-//                if isLocked {
-//                    fileData.resourcesToAdd.append(ResourceEntry(key: currentItem.key, text: currentItem.text, isNew: true))
-//                }
-            //}
             Spacer()
             
             TextField("Key",
@@ -67,9 +60,9 @@ struct ResourceRow: View {
     func save() {
         if originalKey != currentItem.key || originalText != currentItem.text {
             if currentItem.isNew {
-                FileUtility.writeTo(filePath: fileData.filePath, entry: currentItem)
+                FileUtility.writeTo(filePath: appData.filePath, entry: currentItem)
             } else {
-                FileUtility.updateEntry(filePath: fileData.filePath, originalKey: originalKey,
+                FileUtility.updateEntry(filePath: appData.filePath, originalKey: originalKey,
                                         originalText: originalText, updatedEntry: currentItem)
             }
             
@@ -99,7 +92,7 @@ struct ResourceRow: View {
 struct ResourceRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "").environmentObject(FileData())
+            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "").environmentObject(AppData())
         }
     }
 }

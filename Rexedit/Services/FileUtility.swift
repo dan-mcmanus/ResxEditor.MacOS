@@ -11,32 +11,10 @@ import SwiftUI
 import Files
 
 
-func writeTo(filePath: String, entry: ResourceEntry) {
-    guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
-        return
-    }
-    
-    let url = URL(fileURLWithPath: filePath)
-    do {
-        let xmlDoc = try AEXMLDocument(xml: data)
-        let dataNodes = xmlDoc.root.addChild(name: "data", attributes: ["name": entry.key, "xml:space": "preserve"])
-        dataNodes.addChild(name: "value", value: entry.text)
-        
-        do {
-            try xmlDoc.xml.write(to: URL(fileURLWithPath: url.relativePath), atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            print("\(error)")
-            // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-        }
-        
-    } catch  {
-        print("\(error)")
-    }
-}
-
 class FileUtility {
     
     static func parseFile(filePath: String) -> [ResourceEntry] {
+
         var resources: [ResourceEntry] = []
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
             return resources
@@ -45,6 +23,36 @@ class FileUtility {
         do {
             let xmlDoc = try AEXMLDocument(xml: data)
             
+            if let entries = xmlDoc.root["data"].all {
+                for entry in entries {
+                    resources.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
+                }
+            }
+            
+        } catch  {
+            print("\(error)")
+        }
+        return resources
+    }
+    
+    static func parseFile(filePath: String, folderPath: String) -> [ResourceEntry] {
+        
+        do {
+            for file in try Folder(path: folderPath).files {
+                print(file.name)
+            }
+        } catch  {
+            print(error)
+        }
+        
+        var resources: [ResourceEntry] = []
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+            return resources
+        }
+        
+        do {
+            let xmlDoc = try AEXMLDocument(xml: data)
+            print(xmlDoc)
             if let entries = xmlDoc.root["data"].all {
                 for entry in entries {
                     resources.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))

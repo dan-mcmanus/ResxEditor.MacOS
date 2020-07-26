@@ -1,6 +1,6 @@
 //
 //  FileData.swift
-//  Rexedit
+//  RexEdit
 //
 //  Created by Daniel McManus on 7/19/20.
 //
@@ -14,3 +14,11 @@ final class FileData: ObservableObject {
     @Published var resourcesToAdd: [ResourceEntry] = []
     @Published var filePath = ""
 }
+
+class AppData: ObservableObject {
+    //@Published var supportedLanguages: [Language] = [Language("en-US", "English (US)"), Language("es","Spanish (Neutral)")]
+    @Published var supportedLanguages: [Language] = []
+    @Published var filesWithLanguage: [LanguageResource] = []
+    @Published var filePath = ""
+}
+

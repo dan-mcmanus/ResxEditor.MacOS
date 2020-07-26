@@ -11,55 +11,50 @@ import ShellOut
 
 
 struct EditorView: View {
+    @State var forLanguage: String
     @EnvironmentObject var fileData: FileData
+    @EnvironmentObject var appData: AppData
+    @State var match: LanguageResource?
+
     
     func addResourceNode() {
-        fileData.resources.append(ResourceEntry(key: "", text: "", isNew: true))
+        fileData.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
     }
     
-
+    
     
     var body: some View {
-        
-        return
-            ScrollView {
-                VStack {
-                    HStack {
-                        Button("+") {
-                            addResourceNode()
-                        }.padding(.leading)
-                        Spacer()
-                        Button("New Resource File") {
-                            createResxFile(destinationFile: "Resources.resx")
-                        }.padding()
-                        Spacer()
-                        Button("Load file") {
-                            selectFile()
-                            
-                        }.padding(.trailing)
-                    }
-                    HStack {
-                        
-                        Spacer()
-                        Text("Resource Key")
-                        Spacer()
-                        Text("Resource Value")
-                        Spacer()
-                        
-
-                    }.padding(.top)
-                    ForEach(fileData.resources, id: \.self.key) { resource in
-                        ResourceRow(currentItem: resource, originalKey: resource.key, originalText: resource.text)
-                        
-                    }
-                    
+        ScrollView {
+            VStack {
+                Button("New Resource File") {
+                    createResxFile(destinationFile: "Resources.resx")
+                }.padding()
+                HStack {
+                    Button("+") {
+                        addResourceNode()
+                    }.padding(.leading)
                     Spacer()
-                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    Text("Resource Key")
+                    Spacer()
+                    Text("Resource Value")
+                    Spacer()
+                    
+                    
+                }.padding(.top)
+                ForEach(getMatch().resources, id: \.self.key) { item in
+                    ResourceRow(currentItem: item, originalKey: item.key, originalText: item.text)
+                }
+                
+                Spacer()
             }
+        }.frame(minWidth: 400, maxHeight: .infinity)
     }
     
-
-
+    
+    func getMatch() -> LanguageResource {
+        let match = appData.filesWithLanguage.first(where: { $0.language.id == forLanguage})!
+        return match
+    }
     // https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-directory-picker-in-macos-using-swift-5
     func selectFile() {
         let dialog = NSOpenPanel()
@@ -118,7 +113,8 @@ struct EditorView: View {
 
 
 struct EditorView_Previews: PreviewProvider {
+    @State static var language = "en-US"
     static var previews: some View {
-        EditorView().environmentObject(FileData())
+        EditorView(forLanguage: language).environmentObject(FileData()).environmentObject(AppData())
     }
 }
