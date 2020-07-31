@@ -11,7 +11,7 @@ struct NavBar: View {
     @EnvironmentObject var appData: AppData
     @EnvironmentObject var fileData: FileData
     @State var isHidden = false
-    @State var defaultLanguage = Language("en-US", "English (US) [Default]", true)
+    //@State var defaultLanguage = Language("en-US", "English (US) [Default]", true)
     var body: some View {
         return ZStack {
             if !isHidden {
@@ -20,11 +20,9 @@ struct NavBar: View {
                 }
             } else {
                 NavigationView {
-                    List(appData.filesWithLanguage) {lang in
-                        NavigationLink(lang.language.name, destination: EditorView(forLanguage: lang.language.id))
+                    List(self.appData.filesWithLanguage, id: \.self.language.id) {lang in
+                        NavigationLink(lang.language.name, destination: EditorView(languageId: lang.id))
                     }.frame(minWidth: 100, maxWidth: 400)
-                    
-
                 }
             }
 
@@ -41,24 +39,24 @@ struct NavBar: View {
         dialog.showsHiddenFiles = false
         dialog.allowsMultipleSelection = true
         dialog.canChooseDirectories = false
-        
+        var filesWithLanguage: [LanguageResource] = []
         if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
             let results = dialog.urls
             for result in results {
                 let segs = result.lastPathComponent.components(separatedBy: ".")
                 if segs.count > 2 {
-                    appData.filesWithLanguage.append(LanguageResource(language: Language(segs[1], segs[1], false), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path ))
+                    filesWithLanguage.append(LanguageResource(language: Language(segs[1], segs[1], false), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path ))
                     
                 }
                 if segs.count == 2 {
+                    self.appData.baseResourceFile = result.path
                     
-                    ResXFileCodeGenerator.generateDesignerFile(resxFile: result.path, nameSpace: "MemberMobile.Api", className: "Translations", designerFileName: "Translations1.designer.cs")
                     
-                    appData.filesWithLanguage.append(LanguageResource(language: Language(defaultLanguage.id, defaultLanguage.name, true), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path))
+                    filesWithLanguage.append(LanguageResource(language: Language("en-US", "English (US) [Default]", true), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path))
                 }
             }
-            appData.filesWithLanguage = appData.filesWithLanguage.sorted{ $0.language.isDefault && !$1.language.isDefault }
-            isHidden = true
+            self.appData.filesWithLanguage = filesWithLanguage.sorted{ $0.language.isDefault && !$1.language.isDefault }
+            self.isHidden = true
         } else {
             // User clicked on "Cancel"
             return

@@ -11,12 +11,61 @@ import Files
 
 class ResXFileCodeGenerator {
 
+    static func getNamespace(designerFile: String) -> String {
+        var ns = ""
+        let resourcesFolder = FileUtility.getDirectoryOf(file: designerFile)
+        
+        do {
+            for file in try Folder(path: resourcesFolder).files {
+                if file.name.contains(".Designer.cs") {
+                    let designerFile = try file.readAsString()
+                    let lines = designerFile.split(whereSeparator: \.isNewline)
+                    for line in lines {
+                        if line.contains("namespace ") {
+                            print(line)
+                            let segs = line.split(separator: " ")
+                            ns = String(segs[1])
+                        }
+                    }
+                }
+            }
+        } catch  {
+            print(error)
+        }
+        return ns
+    }
+    
+    static func getClassName(designerFile: String) -> String {
+        var className = ""
+        let resourcesFolder = FileUtility.getDirectoryOf(file: designerFile)
+        
+        do {
+            for file in try Folder(path: resourcesFolder).files {
+                if file.name.contains(".Designer.cs") {
+                    let designerFile = try file.readAsString()
+                    let lines = designerFile.split(whereSeparator: \.isNewline)
+                    for line in lines {
+                        if line.contains("internal class ") || line.contains("public class ") {
+                            
+                            let segs = line.split(separator: " ")
+                            className = String(segs[2])
+                            print(className)
+                        }
+                    }
+                }
+            }
+        } catch  {
+            print(error)
+        }
+        return className
+    }
     
     static func generateDesignerFile(resxFile: String, nameSpace: String, className: String, designerFileName: String) {
         let templatesFolder = #file.replacingOccurrences(of: "Services", with: "Templates")  // <-- this is surprisingly difficult to do
             .replacingOccurrences(of: "ResXFileCodeGenerator.swift", with: "")
 
         let resourcesFolder = FileUtility.getDirectoryOf(file: resxFile)
+
         print(resourcesFolder)
         let headerTemplatePath = "\(templatesFolder)HeaderTemplate.txt"
         let elementTemplatePath = "\(templatesFolder)ElementTemplate.txt"
@@ -30,6 +79,8 @@ class ResXFileCodeGenerator {
         }
         
         do {
+            
+
             let resxDoc = try AEXMLDocument(xml: data)
 
             if let entries = resxDoc.root["data"].all {

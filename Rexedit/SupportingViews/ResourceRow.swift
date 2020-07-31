@@ -66,7 +66,13 @@ struct ResourceRow: View {
                 FileUtility.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
                                         originalText: self.originalText, updatedEntry: self.currentItem)
             }
-            
+            if self.appData.selectedLanguageResource.language.isDefault {
+                self.appData.defaultNameSpace = ResXFileCodeGenerator.getNamespace(designerFile: self.appData.baseResourceFile)
+                self.appData.defaultClassName = ResXFileCodeGenerator.getClassName(designerFile: self.appData.baseResourceFile)
+                
+                ResXFileCodeGenerator.generateDesignerFile(resxFile: self.appData.baseResourceFile, nameSpace: self.appData.defaultNameSpace, className: self.appData.defaultClassName, designerFileName: FileUtility.getFileNameFromPath(fullyQualifiedPathString: self.appData.baseResourceFile).replacingOccurrences(of: "resx", with: "Designer.cs"))
+            }
+
             self.isLocked = true
         }
     }

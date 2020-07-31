@@ -1,8 +1,8 @@
 //
-//  ArrayExtensions.swift
+//  UIExtensions.swift
 //  RexEdit
 //
-//  Created by Daniel McManus on 7/26/20.
+//  Created by Daniel McManus on 7/31/20.
 //
 
 import Foundation

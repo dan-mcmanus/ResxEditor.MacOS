@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct ResourceEntry {
+struct ResourceEntry: Identifiable {
+    let id = UUID()
     var key = ""
     var text = ""
     var isNew: Bool

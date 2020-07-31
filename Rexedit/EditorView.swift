@@ -11,23 +11,19 @@ import ShellOut
 
 
 struct EditorView: View {
-    @State var forLanguage: String
+    @State var languageId: UUID
+    
     @EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
 
-    
     func addResourceNode() {
         appData.selectedLanguageResource.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
     }
     
-    
-    
     var body: some View {
         ScrollView {
             VStack {
-                Button("New Resource File") {
-                    self.createResxFile(destinationFile: "Resources.resx")
-                }.padding()
+
                 HStack {
                     Button("+") {
                         self.addResourceNode()
@@ -40,7 +36,7 @@ struct EditorView: View {
                     
                     
                 }.padding(.top)
-                ForEach(self.appData.selectedLanguageResource.resources, id: \.self.key) { item in
+                ForEach(self.appData.selectedLanguageResource.resources, id: \.self.id) { item in
                     ResourceRow(currentItem: item, originalKey: item.key, originalText: item.text, pathToResourceFile: self.appData.selectedLanguageResource.pathToResourceFile)
                 }
                 
@@ -54,7 +50,8 @@ struct EditorView: View {
     
     
     func getMatch() -> LanguageResource {
-        let match = appData.filesWithLanguage.first(where: { $0.language.id == forLanguage})!
+        let match = self.appData.filesWithLanguage.first(where: { $0.id == self.languageId})!
+        self.appData.selectedLanguageResource = match
         return match
     }
     
@@ -89,8 +86,8 @@ struct EditorView: View {
 
 
 struct EditorView_Previews: PreviewProvider {
-    @State static var language = "en-US"
+    @State static var language = UUID()
     static var previews: some View {
-        EditorView(forLanguage: language).environmentObject(FileData()).environmentObject(AppData())
+        EditorView(languageId: language).environmentObject(FileData()).environmentObject(AppData())
     }
 }

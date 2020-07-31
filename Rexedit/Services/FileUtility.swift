@@ -20,7 +20,7 @@ class FileUtility {
         return path.first! != "/" ? "/\(path)" : path
     }
     
-    static func getFileNameFrom(fullyQualifiedPathString: String) -> String {
+    static func getFileNameFromPath(fullyQualifiedPathString: String) -> String {
         let pathSegments = fullyQualifiedPathString.split(separator: "/")
         return String(pathSegments.last!)
     }
@@ -35,36 +35,6 @@ class FileUtility {
         do {
             let xmlDoc = try AEXMLDocument(xml: data)
             
-            if let entries = xmlDoc.root["data"].all {
-                for entry in entries {
-                    resources.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
-                }
-            }
-            
-        } catch  {
-            print("\(error)")
-        }
-        return resources
-    }
-    
-    static func parseFile(filePath: String, folderPath: String) -> [ResourceEntry] {
-        
-        do {
-            for file in try Folder(path: folderPath).files {
-                print(file.name)
-            }
-        } catch  {
-            print(error)
-        }
-        
-        var resources: [ResourceEntry] = []
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
-            return resources
-        }
-        
-        do {
-            let xmlDoc = try AEXMLDocument(xml: data)
-            print(xmlDoc)
             if let entries = xmlDoc.root["data"].all {
                 for entry in entries {
                     resources.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
