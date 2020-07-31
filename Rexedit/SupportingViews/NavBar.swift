@@ -13,17 +13,23 @@ struct NavBar: View {
     @State var isHidden = false
     @State var defaultLanguage = Language("en-US", "English (US) [Default]", true)
     var body: some View {
-        NavigationView {
-            List(appData.filesWithLanguage) {lang in
-                NavigationLink(lang.language.name, destination: EditorView(forLanguage: lang.language.id)).padding()
-            }
-            
+        return ZStack {
             if !isHidden {
                 Button("Load File") {
-                    selectFile()
+                    self.selectFile()
+                }
+            } else {
+                NavigationView {
+                    List(appData.filesWithLanguage) {lang in
+                        NavigationLink(lang.language.name, destination: EditorView(forLanguage: lang.language.id))
+                    }.frame(minWidth: 100, maxWidth: 400)
+                    
+
                 }
             }
+
         }
+
     }
     
     // https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-directory-picker-in-macos-using-swift-5
@@ -41,10 +47,14 @@ struct NavBar: View {
             for result in results {
                 let segs = result.lastPathComponent.components(separatedBy: ".")
                 if segs.count > 2 {
-                    appData.filesWithLanguage.append(LanguageResource(language: Language(segs[1], segs[1], false), resources: FileUtility.parseFile(filePath: result.path)))
+                    appData.filesWithLanguage.append(LanguageResource(language: Language(segs[1], segs[1], false), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path ))
+                    
                 }
                 if segs.count == 2 {
-                    appData.filesWithLanguage.append(LanguageResource(language: Language(defaultLanguage.id, defaultLanguage.name, true), resources: FileUtility.parseFile(filePath: result.path)))
+                    
+                    ResXFileCodeGenerator.generateDesignerFile(resxFile: result.path, nameSpace: "MemberMobile.Api", className: "Translations", designerFileName: "Translations1.designer.cs")
+                    
+                    appData.filesWithLanguage.append(LanguageResource(language: Language(defaultLanguage.id, defaultLanguage.name, true), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path))
                 }
             }
             appData.filesWithLanguage = appData.filesWithLanguage.sorted{ $0.language.isDefault && !$1.language.isDefault }

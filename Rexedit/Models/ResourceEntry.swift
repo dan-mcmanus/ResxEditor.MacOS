@@ -36,4 +36,5 @@ struct LanguageResource: Identifiable {
     let id = UUID()
     var language: Language
     var resources: [ResourceEntry]
+    var pathToResourceFile: String
 }

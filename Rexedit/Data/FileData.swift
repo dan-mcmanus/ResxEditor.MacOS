@@ -20,5 +20,10 @@ class AppData: ObservableObject {
     @Published var supportedLanguages: [Language] = []
     @Published var filesWithLanguage: [LanguageResource] = []
     @Published var filePath = ""
+    @Published var selectedLanguageResource: LanguageResource = LanguageResource(
+        language: Language("en-US", "English (US)", true),
+        resources: [],
+        pathToResourceFile: ""
+    )
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResourceRow: View {
-    //@EnvironmentObject var fileData: FileData
+    @EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
     @State var currentItem: ResourceEntry
     @State var keyIsValid = true
@@ -17,14 +17,15 @@ struct ResourceRow: View {
     
     var originalKey: String
     var originalText: String
+    var pathToResourceFile: String
     
     var body: some View {
         return HStack {
             Spacer()
             Button(isLocked ? "edit" : "save") {
-                isLocked = !isLocked
-                if isLocked {
-                    save()
+                self.isLocked = !self.isLocked
+                if self.isLocked {
+                    self.save()
                 }
             }
             Spacer()
@@ -33,22 +34,22 @@ struct ResourceRow: View {
                       text: $currentItem.key,
                       onEditingChanged: { (onEditingChanged) in
                         if !onEditingChanged {
-                            if currentItem.key.isEmpty {
-                                keyIsValid = false
+                            if self.currentItem.key.isEmpty {
+                                self.keyIsValid = false
                             }
                         }
                       },
                       onCommit: {
 
-                        if currentItem.key.contains(" ") {
-                            currentItem.key = currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
+                        if self.currentItem.key.contains(" ") {
+                            self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
                         }
                       }).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
             Spacer()
             TextField("Value",
                       text: $currentItem.text,
                       onCommit: {
-                        validateText(text: currentItem.text)
+                        self.validateText(text: self.currentItem.text)
                       }).disabled(isLocked)
             Spacer()
 
@@ -58,20 +59,21 @@ struct ResourceRow: View {
     }
     
     func save() {
-        if originalKey != currentItem.key || originalText != currentItem.text {
+        if self.originalKey != self.currentItem.key || self.originalText != self.currentItem.text {
             if currentItem.isNew {
-                FileUtility.writeTo(filePath: appData.filePath, entry: currentItem)
+                FileUtility.writeTo(filePath: self.pathToResourceFile, entry: self.currentItem)
             } else {
-                FileUtility.updateEntry(filePath: appData.filePath, originalKey: originalKey,
-                                        originalText: originalText, updatedEntry: currentItem)
+                FileUtility.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
+                                        originalText: self.originalText, updatedEntry: self.currentItem)
             }
             
-            isLocked = true
+            self.isLocked = true
         }
     }
     
     func update() {
-        
+        FileUtility.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
+                                originalText: self.originalText, updatedEntry: self.currentItem)
     }
     
     func validateKey(key: String) {
@@ -84,15 +86,15 @@ struct ResourceRow: View {
     }
     
     func validateRow() -> Bool {
-        return currentItem.key != "" && currentItem.text != ""
+        return self.currentItem.key != "" && self.currentItem.text != ""
     }
     
 }
 
-struct ResourceRow_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ResourceRow(currentItem: ResourceEntry(key: "", text: "", isNew: true), originalKey: "", originalText: "").environmentObject(AppData())
-        }
-    }
-}
+//struct ResourceRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ResourceRow(fileData: ResourceEntry(key: "", text: "", isNew: true), appData: "", currentItem: "", keyIsValid: "", ).environmentObject(AppData())
+//        }
+//    }
+//}

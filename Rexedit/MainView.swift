@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var appData: AppData
+    @EnvironmentObject var fileData: FileData
     var body: some View {
         VStack {
             HSplitView {
                 NavBar()
-            }
-        }
+            }.frame(minWidth: 300, minHeight: 100, maxHeight: .infinity, alignment: .leading)
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

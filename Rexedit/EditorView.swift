@@ -14,11 +14,10 @@ struct EditorView: View {
     @State var forLanguage: String
     @EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
-    @State var match: LanguageResource?
 
     
     func addResourceNode() {
-        fileData.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
+        appData.selectedLanguageResource.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
     }
     
     
@@ -27,11 +26,11 @@ struct EditorView: View {
         ScrollView {
             VStack {
                 Button("New Resource File") {
-                    createResxFile(destinationFile: "Resources.resx")
+                    self.createResxFile(destinationFile: "Resources.resx")
                 }.padding()
                 HStack {
                     Button("+") {
-                        addResourceNode()
+                        self.addResourceNode()
                     }.padding(.leading)
                     Spacer()
                     Text("Resource Key")
@@ -41,45 +40,22 @@ struct EditorView: View {
                     
                     
                 }.padding(.top)
-                ForEach(getMatch().resources, id: \.self.key) { item in
-                    ResourceRow(currentItem: item, originalKey: item.key, originalText: item.text)
+                ForEach(self.appData.selectedLanguageResource.resources, id: \.self.key) { item in
+                    ResourceRow(currentItem: item, originalKey: item.key, originalText: item.text, pathToResourceFile: self.appData.selectedLanguageResource.pathToResourceFile)
                 }
                 
                 Spacer()
             }
-        }.frame(minWidth: 400, maxHeight: .infinity)
+        }.onAppear {
+            self.appData.selectedLanguageResource = self.getMatch()
+        }
+        .frame(minWidth: 400, minHeight: 400, maxHeight: .infinity).background(Color(0x343A40))
     }
     
     
     func getMatch() -> LanguageResource {
         let match = appData.filesWithLanguage.first(where: { $0.language.id == forLanguage})!
         return match
-    }
-    // https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-directory-picker-in-macos-using-swift-5
-    func selectFile() {
-        let dialog = NSOpenPanel()
-        
-        dialog.title = "Choose a file"
-        dialog.showsResizeIndicator = true
-        dialog.showsHiddenFiles = false
-        dialog.allowsMultipleSelection = false
-        dialog.canChooseDirectories = false
-        
-        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
-            let result = dialog.url
-            
-            if (result != nil) {
-                fileData.filePath = result!.path
-                fileData.resources.removeAll()
-                
-                fileData.resources = FileUtility.parseFile(filePath: fileData.filePath)
-                fileData.resources = fileData.resources.sorted(by: { $0.key.lowercased() < $1.key.lowercased() })
-            }
-            
-        } else {
-            // User clicked on "Cancel"
-            return
-        }
     }
     
     func createResxFile(destinationFile: String) {

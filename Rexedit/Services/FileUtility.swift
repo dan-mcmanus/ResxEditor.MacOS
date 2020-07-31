@@ -13,6 +13,18 @@ import Files
 
 class FileUtility {
     
+    static func getDirectoryOf(file: String) -> String {
+        var pathSegments = file.split(separator: "/")
+        pathSegments.removeLast()
+        let path = pathSegments.joined(separator: "/")
+        return path.first! != "/" ? "/\(path)" : path
+    }
+    
+    static func getFileNameFrom(fullyQualifiedPathString: String) -> String {
+        let pathSegments = fullyQualifiedPathString.split(separator: "/")
+        return String(pathSegments.last!)
+    }
+    
     static func parseFile(filePath: String) -> [ResourceEntry] {
 
         var resources: [ResourceEntry] = []
