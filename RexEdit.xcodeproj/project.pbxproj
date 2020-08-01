@@ -22,6 +22,8 @@
 		379792A424C49B5100AA9DB0 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379792A324C49B5100AA9DB0 /* FileUtility.swift */; };
 		379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 379792A924C4A04D00AA9DB0 /* AEXML */; };
 		37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */; };
+		37AFE24724D5EA8800960984 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFE24624D5EA8800960984 /* Language.swift */; };
+		37AFE24924D5EABA00960984 /* LanguageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFE24824D5EABA00960984 /* LanguageResource.swift */; };
 		37CF55D524CCC27C00513FD6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF55D424CCC27C00513FD6 /* MainView.swift */; };
 		37CF55D924CCC2A200513FD6 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF55D824CCC2A200513FD6 /* NavBar.swift */; };
 		37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A624C8011400738B15 /* ResGenUtility.swift */; };
@@ -29,12 +31,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03C58D9C24D1F38200031D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Rexedit/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		03C58D9E24D1F4C400031D38 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Rexedit/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		03C58DA124D48EFB00031D38 /* HeaderTemplate.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = HeaderTemplate.txt; path = Rexedit/Templates/HeaderTemplate.txt; sourceTree = SOURCE_ROOT; };
-		03C58DA324D48F0500031D38 /* ElementTemplate.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ElementTemplate.txt; path = Rexedit/Templates/ElementTemplate.txt; sourceTree = SOURCE_ROOT; };
-		03C58DA524D48FAD00031D38 /* ResXFileCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResXFileCodeGenerator.swift; path = Rexedit/Services/ResXFileCodeGenerator.swift; sourceTree = SOURCE_ROOT; };
-		03C58DA924D4C08500031D38 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIExtensions.swift; path = Rexedit/Extensions/UIExtensions.swift; sourceTree = SOURCE_ROOT; };
+		03C58D9C24D1F38200031D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RexEdit/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		03C58D9E24D1F4C400031D38 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = RexEdit/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		03C58DA124D48EFB00031D38 /* HeaderTemplate.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = HeaderTemplate.txt; path = RexEdit/Templates/HeaderTemplate.txt; sourceTree = SOURCE_ROOT; };
+		03C58DA324D48F0500031D38 /* ElementTemplate.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ElementTemplate.txt; path = RexEdit/Templates/ElementTemplate.txt; sourceTree = SOURCE_ROOT; };
+		03C58DA524D48FAD00031D38 /* ResXFileCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResXFileCodeGenerator.swift; path = RexEdit/Services/ResXFileCodeGenerator.swift; sourceTree = SOURCE_ROOT; };
+		03C58DA924D4C08500031D38 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIExtensions.swift; path = RexEdit/Extensions/UIExtensions.swift; sourceTree = SOURCE_ROOT; };
 		370E9F4324C3F81C00D1D363 /* RexEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RexEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		370E9F4824C3F81C00D1D363 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		370E9F4A24C3F81D00D1D363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,8 +47,10 @@
 		3782F24624C4DDE4008B18C3 /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
 		379792A324C49B5100AA9DB0 /* FileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
 		37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
-		37CF55D424CCC27C00513FD6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = Rexedit/MainView.swift; sourceTree = SOURCE_ROOT; };
-		37CF55D824CCC2A200513FD6 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavBar.swift; path = Rexedit/SupportingViews/NavBar.swift; sourceTree = SOURCE_ROOT; };
+		37AFE24624D5EA8800960984 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		37AFE24824D5EABA00960984 /* LanguageResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageResource.swift; sourceTree = "<group>"; };
+		37CF55D424CCC27C00513FD6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = RexEdit/MainView.swift; sourceTree = SOURCE_ROOT; };
+		37CF55D824CCC2A200513FD6 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavBar.swift; path = RexEdit/SupportingViews/NavBar.swift; sourceTree = SOURCE_ROOT; };
 		37DE78A624C8011400738B15 /* ResGenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResGenUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */,
+				37AFE24624D5EA8800960984 /* Language.swift */,
+				37AFE24824D5EABA00960984 /* LanguageResource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,8 +257,10 @@
 				37CF55D524CCC27C00513FD6 /* MainView.swift in Sources */,
 				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
 				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
+				37AFE24924D5EABA00960984 /* LanguageResource.swift in Sources */,
 				37CF55D924CCC2A200513FD6 /* NavBar.swift in Sources */,
 				370E9F4924C3F81C00D1D363 /* EditorView.swift in Sources */,
+				37AFE24724D5EA8800960984 /* Language.swift in Sources */,
 				37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */,
 				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
 			);
@@ -385,7 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RexEdit/Preview Content\"";
-				DEVELOPMENT_TEAM = CC7V4QYQL5;
+				DEVELOPMENT_TEAM = 2M498ARC87;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RexEdit/Info.plist;

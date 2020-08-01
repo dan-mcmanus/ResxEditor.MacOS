@@ -21,21 +21,5 @@ struct ResourceEntry: Identifiable {
     }
   
 }
-struct Language: Identifiable {
-    var id: String
-    var name: String
-    var isDefault = false
 
-    init(_ id: String, _ name: String, _ isDefault: Bool) {
-        self.id = id
-        self.name = name
-        self.isDefault = isDefault
-    }
-}
 
-struct LanguageResource: Identifiable {
-    let id = UUID()
-    var language: Language
-    var resources: [ResourceEntry]
-    var pathToResourceFile: String
-}

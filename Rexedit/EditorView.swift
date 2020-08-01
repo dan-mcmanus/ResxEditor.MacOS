@@ -23,19 +23,20 @@ struct EditorView: View {
     var body: some View {
         ScrollView {
             VStack {
-
                 HStack {
                     Button("+") {
                         self.addResourceNode()
                     }.padding(.leading)
+                    
                     Spacer()
                     Text("Resource Key")
+                    
                     Spacer()
                     Text("Resource Value")
+                    
                     Spacer()
-                    
-                    
                 }.padding(.top)
+                
                 ForEach(self.appData.selectedLanguageResource.resources, id: \.self.id) { item in
                     ResourceRow(currentItem: item, originalKey: item.key, originalText: item.text, pathToResourceFile: self.appData.selectedLanguageResource.pathToResourceFile)
                 }
