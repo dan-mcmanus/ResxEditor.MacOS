@@ -45,14 +45,14 @@ struct NavBar: View {
             for result in results {
                 let segs = result.lastPathComponent.components(separatedBy: ".")
                 if segs.count > 2 {
-                    filesWithLanguage.append(LanguageResource(language: Language(segs[1], segs[1], false), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path ))
+                    filesWithLanguage.append(LanguageResource(language: Language(segs[1], segs[1], false), resources: FileUtil.parseFile(filePath: result.path), pathToResourceFile: result.path ))
                     
                 }
                 if segs.count == 2 {
                     self.appData.baseResourceFile = result.path
                     
                     
-                    filesWithLanguage.append(LanguageResource(language: Language("en-US", "English (US) [Default]", true), resources: FileUtility.parseFile(filePath: result.path), pathToResourceFile: result.path))
+                    filesWithLanguage.append(LanguageResource(language: Language("en-US", "English (US) [Default]", true), resources: FileUtil.parseFile(filePath: result.path), pathToResourceFile: result.path))
                 }
             }
             self.appData.filesWithLanguage = filesWithLanguage.sorted{ $0.language.isDefault && !$1.language.isDefault }

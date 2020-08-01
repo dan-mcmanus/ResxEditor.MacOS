@@ -1,6 +1,6 @@
 //
 //  ResourceNode.swift
-//  Rexedit
+//  RexEdit
 //
 //  Created by Daniel McManus on 7/18/20.
 //

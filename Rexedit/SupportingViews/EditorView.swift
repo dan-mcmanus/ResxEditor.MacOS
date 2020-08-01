@@ -15,7 +15,7 @@ struct EditorView: View {
     
     @EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
-
+    
     func addResourceNode() {
         appData.selectedLanguageResource.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
     }
@@ -61,9 +61,9 @@ struct EditorView: View {
         
         let folder = selectPath()
         let tempFile = "\(folder!)/temp.txt"
-        FileUtility.createTextFile(path: folder!, name: "temp.txt", resources: fileData.resourcesToAdd)
+        FileUtil.createTextFile(path: folder!, name: "temp.txt", resources: fileData.resourcesToAdd)
         Bash.execute(command: "resgen", arguments: [tempFile, "\(folder!)/\(destinationFile)"])
-        FileUtility.deleteFile(tempFile)
+        FileUtil.deleteFile(tempFile)
     }
     
     func selectPath() -> String? {

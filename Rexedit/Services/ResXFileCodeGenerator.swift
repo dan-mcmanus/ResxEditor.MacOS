@@ -13,7 +13,7 @@ class ResXFileCodeGenerator {
 
     static func getNamespace(designerFile: String) -> String {
         var ns = ""
-        let resourcesFolder = FileUtility.getDirectoryOf(file: designerFile)
+        let resourcesFolder = FileUtil.getDirectoryOf(file: designerFile)
         
         do {
             for file in try Folder(path: resourcesFolder).files {
@@ -37,7 +37,7 @@ class ResXFileCodeGenerator {
     
     static func getClassName(designerFile: String) -> String {
         var className = ""
-        let resourcesFolder = FileUtility.getDirectoryOf(file: designerFile)
+        let resourcesFolder = FileUtil.getDirectoryOf(file: designerFile)
         
         do {
             for file in try Folder(path: resourcesFolder).files {
@@ -64,7 +64,7 @@ class ResXFileCodeGenerator {
         let templatesFolder = #file.replacingOccurrences(of: "Services", with: "Templates")  // <-- this is surprisingly difficult to do
             .replacingOccurrences(of: "ResXFileCodeGenerator.swift", with: "")
 
-        let resourcesFolder = FileUtility.getDirectoryOf(file: resxFile)
+        let resourcesFolder = FileUtil.getDirectoryOf(file: resxFile)
 
         print(resourcesFolder)
         let headerTemplatePath = "\(templatesFolder)HeaderTemplate.txt"
@@ -106,7 +106,7 @@ class ResXFileCodeGenerator {
                 .replacingOccurrences(of: "{elementdata}", with: fileData)
         
             
-            let folder = try Folder(path: FileUtility.getDirectoryOf(file: resxFile))
+            let folder = try Folder(path: FileUtil.getDirectoryOf(file: resxFile))
             let file = try folder.createFile(named: designerFileName)
             try file.write(designerFile)
         } catch  {

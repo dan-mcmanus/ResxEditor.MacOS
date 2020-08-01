@@ -15,18 +15,5 @@ final class FileData: ObservableObject {
     @Published var filePath = ""
 }
 
-class AppData: ObservableObject {
-    @Published var baseResourceFile: String = ""
-    @Published var defaultNameSpace = ""
-    @Published var defaultClassName = ""
-    	
-    @Published var supportedLanguages: [Language] = []
-    @Published var filesWithLanguage: [LanguageResource] = []
-    @Published var filePath = ""
-    @Published var selectedLanguageResource: LanguageResource = LanguageResource(
-        language: Language("en-US", "English (US)", true),
-        resources: [],
-        pathToResourceFile: ""
-    )
-}
+
 

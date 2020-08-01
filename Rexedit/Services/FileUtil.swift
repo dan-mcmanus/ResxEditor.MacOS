@@ -11,7 +11,7 @@ import SwiftUI
 import Files
 
 
-class FileUtility {
+class FileUtil {
     
     static func getDirectoryOf(file: String) -> String {
         var pathSegments = file.split(separator: "/")
@@ -119,12 +119,6 @@ class FileUtility {
                 dataNodes.addChild(name: "value", value: item.text)
                 print(dataNodes)
             }
-            
-//            for (key, value) in entries {
-//                let dataNodes = xmlDoc.root.addChild(name: "data", attributes: ["name": key])
-//                dataNodes.addChild(name: "value", value: value)
-//                print(dataNodes)
-//            }
             
             do {
                 try xmlDoc.xml.write(to: URL(fileURLWithPath: url.relativePath), atomically: true, encoding: String.Encoding.utf8)
