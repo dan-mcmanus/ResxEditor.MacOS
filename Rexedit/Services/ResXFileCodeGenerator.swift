@@ -79,7 +79,16 @@ class ResXFileCodeGenerator {
         }
         
         do {
+            var hasDesignerFile = false
+            for file in try Folder(path: resourcesFolder).files {
+                if file.name.contains(".Designer.cs") {
+                    hasDesignerFile = true
+                }
+            }
             
+            if !hasDesignerFile {
+                return
+            }
 
             let resxDoc = try AEXMLDocument(xml: data)
 

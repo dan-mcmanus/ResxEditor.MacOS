@@ -7,50 +7,64 @@
 
 import SwiftUI
 
+
 struct ResourceRow: View {
-    @EnvironmentObject var fileData: FileData
+    //@EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
     @State var currentItem: ResourceEntry
     @State var keyIsValid = true
     @State var textIsValid = false
     @State var isLocked = true
+    @State var keyChanged = false
     
     var originalKey: String
     var originalText: String
     var pathToResourceFile: String
+    var isPrimary: Bool
     
     var body: some View {
-        return HStack {
+        HStack {
             Spacer()
             Button(isLocked ? "edit" : "save") {
                 self.isLocked = !self.isLocked
                 if self.isLocked {
-                    self.save()
+                    //self.save(entry: self.currentItem)
+                    if self.currentItem.isNew {
+                        FileUtil.addEntry(toFile: self.pathToResourceFile, newEntry: ResourceEntry(key: self.currentItem.key, text: self.currentItem.text))
+                    }
                 }
             }
             Spacer()
             
-            TextField("Key",
-                      text: $currentItem.key,
-                      onEditingChanged: { (onEditingChanged) in
-                        if !onEditingChanged {
-                            if self.currentItem.key.isEmpty {
-                                self.keyIsValid = false
+            if self.isPrimary {
+                TextField("Key",
+                          text: $currentItem.key,
+                          onEditingChanged: { (onEditingChanged) in
+                            if !onEditingChanged {
+                                if self.currentItem.key.isEmpty {
+                                    self.keyIsValid = false
+                                }
                             }
-                        }
-                      },
-                      onCommit: {
+                          },
+                          onCommit: {
+                            
+                            if self.currentItem.key.contains(" ") {
+                                self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
+                            }
+                          }).frame(maxWidth: .infinity).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
+                Spacer()
+            }
 
-                        if self.currentItem.key.contains(" ") {
-                            self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
-                        }
-                      }).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
-            Spacer()
-            TextField("Value",
-                      text: $currentItem.text,
-                      onCommit: {
-                        self.validateText(text: self.currentItem.text)
-                      }).disabled(isLocked)
+            ForEach(self.appData.filesWithLanguage, id: \.self.language.id) { lang in
+                VStack {
+                TextField("Value",
+                          text: $currentItem.text,
+                          onCommit: {
+                            self.validateText(text: self.currentItem.text)
+                          }).disabled(isLocked)
+                }
+            }
+
             Spacer()
 
         }
@@ -58,7 +72,7 @@ struct ResourceRow: View {
         
     }
     
-    func save() {
+    func save(entry: ResourceEntry) {
         if self.originalKey != self.currentItem.key || self.originalText != self.currentItem.text {
             if currentItem.isNew {
                 FileUtil.writeTo(filePath: self.pathToResourceFile, entry: self.currentItem)
@@ -77,9 +91,14 @@ struct ResourceRow: View {
         }
     }
     
-    func update() {
-        FileUtil.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
-                                originalText: self.originalText, updatedEntry: self.currentItem)
+    func update(isKey: Bool) {
+        if isKey {
+            FileUtil.updateKey(filePath: self.pathToResourceFile, originalKey: self.originalKey, updatedEntry: self.currentItem)
+        } else {
+            FileUtil.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
+                                 originalText: self.originalText, updatedEntry: self.currentItem)
+        }
+
     }
     
     func validateKey(key: String) {
@@ -104,3 +123,9 @@ struct ResourceRow: View {
 //        }
 //    }
 //}
+
+struct ResourceRow_Previews: PreviewProvider {
+    static var previews: some View {
+        ResourceRow(currentItem: ResourceEntry(key: "a", text: "a"), originalKey: "og", originalText: "og", pathToResourceFile: "", isPrimary: true).environmentObject(AppData())
+    }
+}

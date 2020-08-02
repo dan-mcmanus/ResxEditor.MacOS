@@ -8,12 +8,12 @@
 import SwiftUI
 import Combine
 
-final class FileData: ObservableObject {
-    @Published var resourceDictionary: [String: String] = ["": ""]
-    @Published var resources: [ResourceEntry] = [ResourceEntry(key: "", text: "", isNew: true)]
-    @Published var resourcesToAdd: [ResourceEntry] = []
-    @Published var filePath = ""
-}
+//final class FileData: ObservableObject {
+//    @Published var resourceDictionary: [String: String] = ["": ""]
+//    @Published var resources: [ResourceEntry] = [ResourceEntry(key: "", text: "", isNew: true)]
+//    @Published var resourcesToAdd: [ResourceEntry] = []
+//    @Published var filePath = ""
+//}
 
 
 

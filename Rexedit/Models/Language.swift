@@ -8,12 +8,12 @@
 import Foundation
 
 struct Language: Identifiable {
-    var id: String
+    let id = UUID()
     var name: String
-    var isDefault = false
+    var isDefault: Bool
     
-    init(_ id: String, _ name: String, _ isDefault: Bool) {
-        self.id = id
+    init(_ name: String, _ isDefault: Bool) {
+        
         self.name = name
         self.isDefault = isDefault
     }

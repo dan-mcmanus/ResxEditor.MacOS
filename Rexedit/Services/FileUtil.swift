@@ -25,6 +25,71 @@ class FileUtil {
         return String(pathSegments.last!)
     }
     
+    static func getLanguageFromFileName(fileName: String) -> Language {
+        let segs = fileName.split(separator: ".")
+        if segs.count == 2 {
+            return Language("en-US", true)
+        }
+        else {
+            return Language(String(segs[1]), false)
+        }
+    }
+    
+    static func parseFiles(filePath: String) -> [LanguageResource] {
+        var resources: [LanguageResource] = []
+        var masterKeys: [String] = []
+        do {
+            let directory = getDirectoryOf(file: filePath)
+            for file in try Folder(path: directory).files {
+                print(file.name)
+                if file.name.contains(".resx") {
+                    guard let data = try? Data(contentsOf: URL(fileURLWithPath: "\(directory)/\(file.name)")) else {
+                        return resources
+                    }
+                    let xmlDoc = try AEXMLDocument(xml: data)
+                    var entryArray = [ResourceEntry]()
+                    
+                    if let entries = xmlDoc.root["data"].all {
+                        for entry in entries {
+                            entryArray.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
+                        }
+
+                        let languageResource = LanguageResource(
+                            language: getLanguageFromFileName(fileName: file.name),
+                            resources: entryArray,
+                            pathToResourceFile: "\(directory)/\(file.name)"
+                        )
+                        if languageResource.language.isDefault {
+                            masterKeys = languageResource.resources.map { $0.key }
+                        }
+                        
+                        resources.append(languageResource)
+                    }
+                    
+                    
+                    
+                }
+            }
+        } catch  {
+            print(error)
+        }
+        
+        for file in resources {
+            if !file.language.isDefault {
+                for key in masterKeys {
+                    if !file.resources.map({$0.key}).contains(key) {
+                        self.addEntry(toFile: file.pathToResourceFile, newEntry: ResourceEntry(key: key, text: "${_TRANSLATE_}"))
+                    }
+                }
+                
+
+            }
+        }
+        
+
+        return resources
+    }
+    
     static func parseFile(filePath: String) -> [ResourceEntry] {
 
         var resources: [ResourceEntry] = []
@@ -70,6 +135,69 @@ class FileUtil {
         }
     }
     
+    static func addEntry(toFile: String, newEntry: ResourceEntry) {
+        // find all resx files
+        do {
+            let directory = getDirectoryOf(file: toFile)
+            for file in try Folder(path: directory).files {
+                if file.name.contains(".resx") {
+                    guard let data = try? Data(contentsOf: URL(fileURLWithPath: "\(directory)/\(file.name)")) else {
+                        return
+                    }
+                    let xmlDoc = try AEXMLDocument(xml: data)
+                    let dataNodes = xmlDoc.root.addChild(name: "data", attributes: ["name": newEntry.key, "xml:space": "preserve"])
+                    dataNodes.addChild(name: "value", value: newEntry.text)
+                    
+                    do {
+                        try xmlDoc.xml.write(to: URL(fileURLWithPath: toFile), atomically: true, encoding: String.Encoding.utf8)
+                    } catch {
+                        print("\(error)")
+                        // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+                    }
+                }
+            }
+
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func updateKey(filePath: String, originalKey: String, updatedEntry: ResourceEntry) {
+
+        
+        do {
+            
+            let directory = getDirectoryOf(file: filePath)
+            for file in try Folder(path: directory).files {
+                
+                if file.name.contains(".resx") {
+                    guard let data = try? Data(contentsOf: URL(fileURLWithPath: "\(directory)/\(file.name)")) else {
+                        return
+                    }
+                    let xmlDoc = try AEXMLDocument(xml: data)
+                    
+                    if let entries = xmlDoc.root["data"].all {
+                        for entry in entries {
+                            if entry.attributes["name"]! == originalKey {
+                                entry.attributes["name"]! = updatedEntry.key
+                            }
+                            
+                            do {
+                                try xmlDoc.xml.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: String.Encoding.utf8)
+                            } catch {
+                                print("\(error)")
+                                // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+                            }
+                        }
+                    }
+                }
+            }
+            
+        } catch  {
+            print("\(error)")
+        }
+    }
+    
     static func updateEntry(filePath: String, originalKey: String, originalText: String, updatedEntry: ResourceEntry) {
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
             return
@@ -84,7 +212,7 @@ class FileUtil {
                         entry.attributes["name"]! = updatedEntry.key
                     }
                     
-                    if entry["value"].value == originalText {
+                    if entry["value"].value == originalText && entry.attributes["name"]! == originalKey{
                         entry["value"].value = updatedEntry.text
                     }
                     do {
@@ -101,39 +229,39 @@ class FileUtil {
             print("\(error)")
         }
     }
-    
-    func writeTo(filePath: String, fileData: FileData) {
-        
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
-            return
-        }
-        
-        let url = URL(fileURLWithPath: filePath)
-        print(url)
-        
-        do {
-            let xmlDoc = try AEXMLDocument(xml: data)
-            
-            for item in fileData.resourcesToAdd {
-                let dataNodes = xmlDoc.root.addChild(name: "data", attributes: ["name": item.key])
-                dataNodes.addChild(name: "value", value: item.text)
-                print(dataNodes)
-            }
-            
-            do {
-                try xmlDoc.xml.write(to: URL(fileURLWithPath: url.relativePath), atomically: true, encoding: String.Encoding.utf8)
-            } catch {
-                print("\(error)")
-                // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-            }
-            
-            
-            print(xmlDoc.xml)
-            
-        } catch  {
-            print("\(error)")
-        }
-    }
+
+//    func writeTo(filePath: String, fileData: FileData) {
+//
+//        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+//            return
+//        }
+//
+//        let url = URL(fileURLWithPath: filePath)
+//        print(url)
+//
+//        do {
+//            let xmlDoc = try AEXMLDocument(xml: data)
+//
+//            for item in fileData.resourcesToAdd {
+//                let dataNodes = xmlDoc.root.addChild(name: "data", attributes: ["name": item.key])
+//                dataNodes.addChild(name: "value", value: item.text)
+//                print(dataNodes)
+//            }
+//
+//            do {
+//                try xmlDoc.xml.write(to: URL(fileURLWithPath: url.relativePath), atomically: true, encoding: String.Encoding.utf8)
+//            } catch {
+//                print("\(error)")
+//                // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+//            }
+//
+//
+//            print(xmlDoc.xml)
+//
+//        } catch  {
+//            print("\(error)")
+//        }
+//    }
 
     static func createTextFile(path: String, name: String, resources: [ResourceEntry] = []) {
         do {

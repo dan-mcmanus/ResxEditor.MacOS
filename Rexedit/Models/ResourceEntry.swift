@@ -12,12 +12,17 @@ struct ResourceEntry: Identifiable {
     let id = UUID()
     var key = ""
     var text = ""
-    var isNew: Bool
+    var isNew: Bool = false
     
     init(key: String, text: String, isNew: Bool) {
         self.key = key
         self.text = text
         self.isNew = isNew
+    }
+    
+    init(key: String, text: String) {
+        self.key = key
+        self.text = text
     }
   
 }
