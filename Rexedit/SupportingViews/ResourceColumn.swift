@@ -60,7 +60,7 @@ struct ResourceColumn: View {
                 }
                 
                 Spacer()
-                Text(self.language.name)
+                Text(self.language.name.uppercased())
                 
                 Spacer()
             }.padding(.top)

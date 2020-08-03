@@ -12,6 +12,7 @@ import Files
 
 
 class FileUtil {
+    static var hasUpdates = false
     
     static func getDirectoryOf(file: String) -> String {
         var pathSegments = file.split(separator: "/")
@@ -50,7 +51,9 @@ class FileUtil {
                     var entryArray = [ResourceEntry]()
                     
                     if let entries = xmlDoc.root["data"].all {
-                        for entry in entries {
+                        let sorted = entries.sorted(by: { $0.attributes["name"]!.lowercased() < $1.attributes["name"]!.lowercased() })
+                        for entry in sorted {
+                            
                             entryArray.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
                         }
 
@@ -61,6 +64,7 @@ class FileUtil {
                         )
                         if languageResource.language.isDefault {
                             masterKeys = languageResource.resources.map { $0.key }
+                            masterKeys = masterKeys.sorted(by: { $0.lowercased() < $1.lowercased()})
                             languageResource.masterKeys = masterKeys
                         }
                         
@@ -75,18 +79,32 @@ class FileUtil {
             print(error)
         }
         
+        let defaultResourceSet = resources.filter { $0.language.isDefault }.first!
         for file in resources {
             if !file.language.isDefault {
-                for key in masterKeys {
-                    if !file.resources.map({$0.key}).contains(key) {
-                        print("missing key: \(key)")
-                        self.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: key, text: ""))
+                let keys = file.resources.map({$0.key})
+                let dif = masterKeys.difference(from: keys)
+                
+                
+                if dif.count > 0 {
+                    for key in dif {
+                        if !defaultResourceSet.resources.map({$0.key}).contains(key)  {
+                            self.writeTo(filePath: defaultResourceSet.pathToResourceFile, entry: ResourceEntry(key: key, text: ""))
+                        }
+                        if !file.resources.map({$0.key}).contains(key) {
+                            self.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: key, text: ""))
+                        }
                     }
+                    
+                    let nc = NotificationCenter.default
+                    nc.post(name: Notification.Name("hasupdates"), object: nil)
+                    
                 }
             }
         }
         
         resources = resources.sorted(by: { $0.language.isDefault && !$1.language.isDefault })
+        
         return resources
     }
     

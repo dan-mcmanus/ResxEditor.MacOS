@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct ResourceRow: View {
-    //@EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
     @State var currentItem: ResourceEntry
     @State var keyIsValid = true
@@ -25,33 +24,7 @@ struct ResourceRow: View {
     
     var body: some View {
         HStack {
-            Spacer()
-            Button(isLocked ? "edit" : "save") {
-                self.isLocked = !self.isLocked
-                if self.isLocked {
-                    //self.save(entry: self.currentItem)
-                    if self.currentItem.isNew {
-                        for file in self.appData.allResources {
-                            FileUtil.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: self.currentItem.key, text: " "))
-                        }
-                    }
-                    
-                    if self.currentItem.key != self.originalKey {
-                        for file in self.appData.allResources {
-                            self.saveKey(filePath: file.pathToResourceFile, entry: self.currentItem)
-                        }
-                        
-                        self.runCodeGen()
-                        self.isLocked = true
-                    }
-                    
-                    if self.currentItem.text != self.originalText {
-                        self.saveText(entry: self.currentItem)
-                    }
-                    
-                    self.appData.allResources = FileUtil.parseFiles(filePath: self.appData.baseResourceFile)
-                }
-            }
+            
             Spacer()
             
             if self.isKeys {
@@ -61,6 +34,8 @@ struct ResourceRow: View {
                             if !onEditingChanged {
                                 if self.currentItem.key.isEmpty {
                                     self.keyIsValid = false
+                                } else {
+                                    self.onFocusChanged()
                                 }
                             }
                           },
@@ -69,14 +44,23 @@ struct ResourceRow: View {
                             if self.currentItem.key.contains(" ") {
                                 self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
                             }
-                          }).frame(minWidth: 100).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
+                          }).frame(minWidth: 100).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
                 Spacer()
             } else {
                 TextField("Value",
                           text: $currentItem.text,
+                          onEditingChanged: { (onEditingChanged) in
+                            if !onEditingChanged {
+                                if self.currentItem.text.isEmpty {
+                                    self.textIsValid = false
+                                } else {
+                                    self.onFocusChanged()
+                                }
+                            }
+                          },
                           onCommit: {
                             self.validateText(text: self.currentItem.text)
-                          }).disabled(isLocked)
+                          })
                     .frame(minWidth: 400)
             }
 
@@ -85,6 +69,33 @@ struct ResourceRow: View {
         }
         
         
+    }
+    
+    func onFocusChanged() {
+        self.isLocked = !self.isLocked
+        if self.isLocked {
+            //self.save(entry: self.currentItem)
+            if self.currentItem.isNew {
+                for file in self.appData.allResources {
+                    FileUtil.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: self.currentItem.key, text: " "))
+                }
+            }
+            
+            if self.currentItem.key != self.originalKey {
+                for file in self.appData.allResources {
+                    self.saveKey(filePath: file.pathToResourceFile, entry: self.currentItem)
+                }
+                
+                self.runCodeGen()
+                self.isLocked = true
+            }
+            
+            if self.currentItem.text != self.originalText {
+                self.saveText(entry: self.currentItem)
+            }
+            
+            self.appData.allResources = FileUtil.parseFiles(filePath: self.appData.baseResourceFile)
+        }
     }
     
     func saveKey(filePath: String, entry: ResourceEntry) {

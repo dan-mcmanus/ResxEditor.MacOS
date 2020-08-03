@@ -32,3 +32,14 @@ extension NSRegularExpression {
         return firstMatch(in: string, options: [], range: range) != nil
     }
 }
+extension Array where Element: Comparable {
+    func containsSameElements(as other: [Element]) -> Bool {
+        return self.count == other.count && self.sorted() == other.sorted()
+    }
+}
+extension Array where Element: Hashable {
+func difference(from other: [Element]) -> [Element] {
+    let thisSet = Set(self)
+    let otherSet = Set(other)
+    return Array(thisSet.symmetricDifference(otherSet))
+} }
