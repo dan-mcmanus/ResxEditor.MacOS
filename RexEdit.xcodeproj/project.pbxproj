@@ -18,7 +18,6 @@
 		370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E9F7224C3F8C300D1D363 /* ResourceRow.swift */; };
 		3714503124D742C700154C32 /* ResourceColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3714503024D742C700154C32 /* ResourceColumn.swift */; };
 		3768363E24C87D6F0052FAD5 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 3768363D24C87D6F0052FAD5 /* Files */; };
-		3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782F24624C4DDE4008B18C3 /* FileData.swift */; };
 		379792A424C49B5100AA9DB0 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379792A324C49B5100AA9DB0 /* FileUtil.swift */; };
 		379792AA24C4A04D00AA9DB0 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 379792A924C4A04D00AA9DB0 /* AEXML */; };
 		37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */; };
@@ -45,7 +44,6 @@
 		370E9F5024C3F81D00D1D363 /* RexEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexEdit.entitlements; sourceTree = "<group>"; };
 		370E9F7224C3F8C300D1D363 /* ResourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRow.swift; sourceTree = "<group>"; };
 		3714503024D742C700154C32 /* ResourceColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceColumn.swift; sourceTree = "<group>"; };
-		3782F24624C4DDE4008B18C3 /* FileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
 		379792A324C49B5100AA9DB0 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		37A6B21924C3FD4500AEEBA7 /* ResourceEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEntry.swift; sourceTree = "<group>"; };
 		37AFE24624D5EA8800960984 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 		37A6B23C24C40E2700AEEBA7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3782F24624C4DDE4008B18C3 /* FileData.swift */,
 				37AFE24A24D622D800960984 /* AppData.swift */,
 			);
 			path = Data;
@@ -265,7 +262,6 @@
 				37AFE24724D5EA8800960984 /* Language.swift in Sources */,
 				3714503124D742C700154C32 /* ResourceColumn.swift in Sources */,
 				37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */,
-				3782F24724C4DDE4008B18C3 /* FileData.swift in Sources */,
 				37AFE24B24D622D800960984 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

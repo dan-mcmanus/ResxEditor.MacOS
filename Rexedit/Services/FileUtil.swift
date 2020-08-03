@@ -224,37 +224,37 @@ class FileUtil {
         }
     }
     
-    static func updateEntry(filePath: String, originalKey: String, originalText: String, updatedEntry: ResourceEntry) {
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
-            return
-        }
-        
-        do {
-            let xmlDoc = try AEXMLDocument(xml: data)
-            
-            if let entries = xmlDoc.root["data"].all {
-                for entry in entries {
-                    if entry.attributes["name"]! == originalKey {
-                        entry.attributes["name"]! = updatedEntry.key
-                        if updatedEntry.text != originalText {
-                            entry["value"].value = updatedEntry.text
-                        }
-                    }
-                    
-                    do {
-                        try xmlDoc.xml.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: String.Encoding.utf8)
-                    } catch {
-                        print("\(error)")
-                        // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-                    }
-                    
-                }
-            }
-            
-        } catch  {
-            print("\(error)")
-        }
-    }
+//    static func updateEntry(filePath: String, originalKey: String, originalText: String, updatedEntry: ResourceEntry) {
+//        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+//            return
+//        }
+//
+//        do {
+//            let xmlDoc = try AEXMLDocument(xml: data)
+//
+//            if let entries = xmlDoc.root["data"].all {
+//                for entry in entries {
+//                    if entry.attributes["name"]! == originalKey {
+//                        entry.attributes["name"]! = updatedEntry.key
+//                        if updatedEntry.text != originalText {
+//                            entry["value"].value = updatedEntry.text
+//                        }
+//                    }
+//
+//                    do {
+//                        try xmlDoc.xml.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: String.Encoding.utf8)
+//                    } catch {
+//                        print("\(error)")
+//                        // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+//                    }
+//
+//                }
+//            }
+//
+//        } catch  {
+//            print("\(error)")
+//        }
+//    }
 
 //    func writeTo(filePath: String, fileData: FileData) {
 //
