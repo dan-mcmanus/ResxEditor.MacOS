@@ -11,6 +11,23 @@ import Files
 
 class ResXFileCodeGenerator {
 
+    static func checkForDesignerFile(filePath: String) -> Bool {
+        var exists = false
+        let folder = FileUtil.getDirectoryOf(file: filePath)
+        
+        do {
+            for file in try Folder(path: folder).files {
+                if file.name.contains(".Designer.cs") {
+                    exists = true
+                }
+            }
+        } catch {
+            print(error)
+        }
+        
+        return exists
+    }
+    
     static func getNamespace(designerFile: String) -> String {
         var ns = ""
         let resourcesFolder = FileUtil.getDirectoryOf(file: designerFile)

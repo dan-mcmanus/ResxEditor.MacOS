@@ -24,8 +24,7 @@ struct MainView: View {
                 
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color(0x343A40))
-        .edgesIgnoringSafeArea(.all)
-        
+        .clipped()
     }
     
     // https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-directory-picker-in-macos-using-swift-5
@@ -37,26 +36,16 @@ struct MainView: View {
         dialog.showsHiddenFiles = false
         dialog.allowsMultipleSelection = true
         dialog.canChooseDirectories = false
-        var filesWithLanguage: [LanguageResource] = []
+        //var filesWithLanguage: [LanguageResource] = []
         if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
             let results = dialog.urls
             for result in results {
                 self.appData.allResources = FileUtil.parseFiles(filePath: result.path)
                 self.appData.allResources = self.appData.allResources.sorted{ $0.language.isDefault && !$1.language.isDefault }
-                
-                let segs = result.lastPathComponent.components(separatedBy: ".")
-                if segs.count > 2 {
-                    filesWithLanguage.append(LanguageResource(language: Language(segs[1], false),
-                                                              resources: FileUtil.parseFile(filePath: result.path),
-                                                              pathToResourceFile: result.path))
-                    
-                }
-                if segs.count == 2 {
-                    self.appData.baseResourceFile = result.path
-                    filesWithLanguage.append(LanguageResource(language: Language("en-US", true), resources: FileUtil.parseFile(filePath: result.path), pathToResourceFile: result.path))
-                }
+                self.appData.baseResourceFile = result.path
             }
-            self.appData.filesWithLanguage = filesWithLanguage.sorted{ $0.language.isDefault && !$1.language.isDefault }
+            self.appData.allResources = self.appData.allResources.sorted{ $0.language.isDefault && !$1.language.isDefault }
+            self.appData.masterKeys = self.appData.allResources.filter{ $0.language.isDefault }.first!.resources.map{ $0.key }
             self.isHidden = true
         } else {
             // User clicked on "Cancel"

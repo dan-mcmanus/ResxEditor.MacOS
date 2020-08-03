@@ -37,7 +37,6 @@ class FileUtil {
     
     static func parseFiles(filePath: String) -> [LanguageResource] {
         var resources: [LanguageResource] = []
-        var masterKeys: [String] = []
         do {
             let directory = getDirectoryOf(file: filePath)
             for file in try Folder(path: directory).files {
@@ -54,13 +53,13 @@ class FileUtil {
                             entryArray.append(ResourceEntry(key: entry.attributes["name"]!, text: entry["value"].string, isNew: false))
                         }
 
-                        let languageResource = LanguageResource(
+                        var languageResource = LanguageResource(
                             language: getLanguageFromFileName(fileName: file.name),
                             resources: entryArray,
                             pathToResourceFile: "\(directory)/\(file.name)"
                         )
                         if languageResource.language.isDefault {
-                            masterKeys = languageResource.resources.map { $0.key }
+                            languageResource.masterKeys = languageResource.resources.map { $0.key }
                         }
                         
                         resources.append(languageResource)
@@ -76,7 +75,7 @@ class FileUtil {
         
         for file in resources {
             if !file.language.isDefault {
-                for key in masterKeys {
+                for key in file.masterKeys {
                     if !file.resources.map({$0.key}).contains(key) {
                         self.addEntry(toFile: file.pathToResourceFile, newEntry: ResourceEntry(key: key, text: "${_TRANSLATE_}"))
                     }
@@ -86,7 +85,7 @@ class FileUtil {
             }
         }
         
-
+        resources = resources.sorted(by: { $0.language.isDefault && !$1.language.isDefault })
         return resources
     }
     
@@ -136,7 +135,7 @@ class FileUtil {
     }
     
     static func addEntry(toFile: String, newEntry: ResourceEntry) {
-        // find all resx files
+        
         do {
             let directory = getDirectoryOf(file: toFile)
             for file in try Folder(path: directory).files {
@@ -163,8 +162,6 @@ class FileUtil {
     }
     
     static func updateKey(filePath: String, originalKey: String, updatedEntry: ResourceEntry) {
-
-        
         do {
             
             let directory = getDirectoryOf(file: filePath)
@@ -198,6 +195,35 @@ class FileUtil {
         }
     }
     
+    static func updateText(filePath: String, entry: ResourceEntry) {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+            return
+        }
+        
+        do {
+            let xmlDoc = try AEXMLDocument(xml: data)
+            
+            if let entries = xmlDoc.root["data"].all {
+                for node in entries {
+                    if node.attributes["name"]! == entry.key {
+                        node["value"].value = entry.text
+                    }
+                    
+                    do {
+                        try xmlDoc.xml.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: String.Encoding.utf8)
+                    } catch {
+                        print("\(error)")
+                        // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+                    }
+                    
+                }
+            }
+            
+        } catch  {
+            print("\(error)")
+        }
+    }
+    
     static func updateEntry(filePath: String, originalKey: String, originalText: String, updatedEntry: ResourceEntry) {
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
             return
@@ -210,11 +236,11 @@ class FileUtil {
                 for entry in entries {
                     if entry.attributes["name"]! == originalKey {
                         entry.attributes["name"]! = updatedEntry.key
+                        if updatedEntry.text != originalText {
+                            entry["value"].value = updatedEntry.text
+                        }
                     }
                     
-                    if entry["value"].value == originalText && entry.attributes["name"]! == originalKey{
-                        entry["value"].value = updatedEntry.text
-                    }
                     do {
                         try xmlDoc.xml.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: String.Encoding.utf8)
                     } catch {

@@ -16,38 +16,19 @@ struct EditorView: View {
     //@EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
     
-    func addResourceNode() {
-        appData.selectedLanguageResource.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
-        for var resource in self.appData.allResources {
-            resource.resources.insert(ResourceEntry(key: "", text: "", isNew: true), at: 0)
-        }
-    }
-    
     var body: some View {
-        VStack {
-            
-            HStack(alignment: self.alignment) {
-                Section {
-                    ForEach(self.appData.allResources) { resource in
-                        ResourceColumn(resourceSet: resource, language: resource.language, pathToResourceFile: resource.pathToResourceFile).frame(maxWidth: .infinity, maxHeight: .infinity)
-                        
-                        
-                    }
-                }
+        HSplitView {
+            KeysColumn(baseFilePath: self.appData.baseResourceFile)
+            ForEach(self.appData.allResources, id: \.self.language.id) { resource in
+                ResourceColumn(resourceSet: resource, language: resource.language, pathToResourceFile: resource.pathToResourceFile)
             }
-        }
+        }.frame(maxHeight: .infinity, alignment: .top)
            // }//
         //}//.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).background(Color(0x343A40))
         
         
     }
-    
-    
-//    func getMatch() -> LanguageResource {
-//        let match = self.appData.filesWithLanguage.first(where: { $0.id == self.languageId})!
-//        self.appData.selectedLanguageResource = match
-//        return match
-//    }
+
     
     func createResxFile(destinationFile: String) {
         //https://docs.microsoft.com/en-us/dotnet/framework/tools/resgen-exe-resource-file-generator

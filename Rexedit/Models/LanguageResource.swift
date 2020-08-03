@@ -13,4 +13,5 @@ struct LanguageResource: Identifiable {
     var language: Language
     var resources: [ResourceEntry]
     var pathToResourceFile: String
+    var masterKeys = [String]()
 }

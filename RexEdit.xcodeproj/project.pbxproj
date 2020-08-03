@@ -27,7 +27,6 @@
 		37AFE24B24D622D800960984 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFE24A24D622D800960984 /* AppData.swift */; };
 		37AFE24D24D6245B00960984 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFE24C24D6245B00960984 /* EditorView.swift */; };
 		37CF55D524CCC27C00513FD6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF55D424CCC27C00513FD6 /* MainView.swift */; };
-		37CF55D924CCC2A200513FD6 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF55D824CCC2A200513FD6 /* NavBar.swift */; };
 		37DE78A724C8011400738B15 /* ResGenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE78A624C8011400738B15 /* ResGenUtility.swift */; };
 		37DE78AA24C803F500738B15 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 37DE78A924C803F500738B15 /* ShellOut */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		37AFE24A24D622D800960984 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		37AFE24C24D6245B00960984 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		37CF55D424CCC27C00513FD6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = RexEdit/MainView.swift; sourceTree = SOURCE_ROOT; };
-		37CF55D824CCC2A200513FD6 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavBar.swift; path = RexEdit/SupportingViews/NavBar.swift; sourceTree = SOURCE_ROOT; };
 		37DE78A624C8011400738B15 /* ResGenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResGenUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				370E9F7224C3F8C300D1D363 /* ResourceRow.swift */,
-				37CF55D824CCC2A200513FD6 /* NavBar.swift */,
 				37AFE24C24D6245B00960984 /* EditorView.swift */,
 				3714503024D742C700154C32 /* ResourceColumn.swift */,
 			);
@@ -264,7 +261,6 @@
 				370E9F7324C3F8C300D1D363 /* ResourceRow.swift in Sources */,
 				37A6B21A24C3FD4500AEEBA7 /* ResourceEntry.swift in Sources */,
 				37AFE24924D5EABA00960984 /* LanguageResource.swift in Sources */,
-				37CF55D924CCC2A200513FD6 /* NavBar.swift in Sources */,
 				37AFE24D24D6245B00960984 /* EditorView.swift in Sources */,
 				37AFE24724D5EA8800960984 /* Language.swift in Sources */,
 				3714503124D742C700154C32 /* ResourceColumn.swift in Sources */,

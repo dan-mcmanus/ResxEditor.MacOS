@@ -18,9 +18,10 @@ struct ResourceRow: View {
     @State var keyChanged = false
     
     var originalKey: String
-    var originalText: String
+    var originalText: String = ""
     var pathToResourceFile: String
     var isPrimary: Bool
+    var isKeys = false
     
     var body: some View {
         HStack {
@@ -30,13 +31,30 @@ struct ResourceRow: View {
                 if self.isLocked {
                     //self.save(entry: self.currentItem)
                     if self.currentItem.isNew {
-                        FileUtil.addEntry(toFile: self.pathToResourceFile, newEntry: ResourceEntry(key: self.currentItem.key, text: self.currentItem.text))
+                        for file in self.appData.allResources {
+                            FileUtil.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: self.currentItem.key, text: " "))
+                        }
                     }
+                    
+                    if self.currentItem.key != self.originalKey {
+                        for file in self.appData.allResources {
+                            saveKey(filePath: file.pathToResourceFile, entry: self.currentItem)
+                        }
+                        
+                        self.runCodeGen()
+                        self.isLocked = true
+                    }
+                    
+                    if self.currentItem.text != self.originalText {
+                        saveText(entry: self.currentItem)
+                    }
+                    
+                    self.appData.allResources = FileUtil.parseFiles(filePath: self.appData.baseResourceFile)
                 }
             }
             Spacer()
             
-            if self.isPrimary {
+            if self.isKeys {
                 TextField("Key",
                           text: $currentItem.key,
                           onEditingChanged: { (onEditingChanged) in
@@ -51,18 +69,15 @@ struct ResourceRow: View {
                             if self.currentItem.key.contains(" ") {
                                 self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
                             }
-                          }).frame(maxWidth: .infinity).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
+                          }).frame(minWidth: 100).disabled(isLocked).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
                 Spacer()
-            }
-
-            ForEach(self.appData.filesWithLanguage, id: \.self.language.id) { lang in
-                VStack {
+            } else {
                 TextField("Value",
                           text: $currentItem.text,
                           onCommit: {
                             self.validateText(text: self.currentItem.text)
                           }).disabled(isLocked)
-                }
+                    .frame(minWidth: 400)
             }
 
             Spacer()
@@ -72,33 +87,29 @@ struct ResourceRow: View {
         
     }
     
-    func save(entry: ResourceEntry) {
-        if self.originalKey != self.currentItem.key || self.originalText != self.currentItem.text {
-            if currentItem.isNew {
-                FileUtil.writeTo(filePath: self.pathToResourceFile, entry: self.currentItem)
-            } else {
-                FileUtil.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
-                                        originalText: self.originalText, updatedEntry: self.currentItem)
-            }
-            if self.appData.selectedLanguageResource.language.isDefault {
+    func saveKey(filePath: String, entry: ResourceEntry) {
+        if self.originalKey != entry.key {
+            FileUtil.updateKey(filePath: filePath, originalKey: self.originalKey, updatedEntry: entry)
+        }
+    }
+    
+    func saveText(entry: ResourceEntry) {
+        FileUtil.updateText(filePath: self.pathToResourceFile, entry: entry)
+        
+        self.runCodeGen()
+        self.isLocked = true
+    }
+    
+    func runCodeGen() {
+        if self.appData.selectedLanguageResource.language.isDefault {
+            if ResXFileCodeGenerator.checkForDesignerFile(filePath: self.pathToResourceFile) {
+         
                 self.appData.defaultNameSpace = ResXFileCodeGenerator.getNamespace(designerFile: self.appData.baseResourceFile)
                 self.appData.defaultClassName = ResXFileCodeGenerator.getClassName(designerFile: self.appData.baseResourceFile)
                 
                 ResXFileCodeGenerator.generateDesignerFile(resxFile: self.appData.baseResourceFile, nameSpace: self.appData.defaultNameSpace, className: self.appData.defaultClassName, designerFileName: FileUtil.getFileNameFromPath(fullyQualifiedPathString: self.appData.baseResourceFile).replacingOccurrences(of: "resx", with: "Designer.cs"))
             }
-
-            self.isLocked = true
         }
-    }
-    
-    func update(isKey: Bool) {
-        if isKey {
-            FileUtil.updateKey(filePath: self.pathToResourceFile, originalKey: self.originalKey, updatedEntry: self.currentItem)
-        } else {
-            FileUtil.updateEntry(filePath: self.pathToResourceFile, originalKey: self.originalKey,
-                                 originalText: self.originalText, updatedEntry: self.currentItem)
-        }
-
     }
     
     func validateKey(key: String) {
@@ -115,14 +126,6 @@ struct ResourceRow: View {
     }
     
 }
-
-//struct ResourceRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            ResourceRow(fileData: ResourceEntry(key: "", text: "", isNew: true), appData: "", currentItem: "", keyIsValid: "", ).environmentObject(AppData())
-//        }
-//    }
-//}
 
 struct ResourceRow_Previews: PreviewProvider {
     static var previews: some View {
