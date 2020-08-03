@@ -37,6 +37,7 @@ class FileUtil {
     
     static func parseFiles(filePath: String) -> [LanguageResource] {
         var resources: [LanguageResource] = []
+        var masterKeys: [String] = []
         do {
             let directory = getDirectoryOf(file: filePath)
             for file in try Folder(path: directory).files {
@@ -59,7 +60,8 @@ class FileUtil {
                             pathToResourceFile: "\(directory)/\(file.name)"
                         )
                         if languageResource.language.isDefault {
-                            languageResource.masterKeys = languageResource.resources.map { $0.key }
+                            masterKeys = languageResource.resources.map { $0.key }
+                            languageResource.masterKeys = masterKeys
                         }
                         
                         resources.append(languageResource)
@@ -75,13 +77,12 @@ class FileUtil {
         
         for file in resources {
             if !file.language.isDefault {
-                for key in file.masterKeys {
+                for key in masterKeys {
                     if !file.resources.map({$0.key}).contains(key) {
-                        self.addEntry(toFile: file.pathToResourceFile, newEntry: ResourceEntry(key: key, text: "${_TRANSLATE_}"))
+                        print("missing key: \(key)")
+                        self.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: key, text: ""))
                     }
                 }
-                
-
             }
         }
         

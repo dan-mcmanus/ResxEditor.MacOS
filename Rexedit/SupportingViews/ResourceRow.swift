@@ -38,7 +38,7 @@ struct ResourceRow: View {
                     
                     if self.currentItem.key != self.originalKey {
                         for file in self.appData.allResources {
-                            saveKey(filePath: file.pathToResourceFile, entry: self.currentItem)
+                            self.saveKey(filePath: file.pathToResourceFile, entry: self.currentItem)
                         }
                         
                         self.runCodeGen()
@@ -46,7 +46,7 @@ struct ResourceRow: View {
                     }
                     
                     if self.currentItem.text != self.originalText {
-                        saveText(entry: self.currentItem)
+                        self.saveText(entry: self.currentItem)
                     }
                     
                     self.appData.allResources = FileUtil.parseFiles(filePath: self.appData.baseResourceFile)
