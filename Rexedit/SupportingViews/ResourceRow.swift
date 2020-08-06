@@ -30,36 +30,21 @@ struct ResourceRow: View {
             if self.isKeys {
                 TextField("Key",
                           text: $currentItem.key,
-                          onEditingChanged: { (onEditingChanged) in
-                            if !onEditingChanged {
-                                if self.currentItem.key.isEmpty {
-                                    self.keyIsValid = false
-                                } else {
-                                    self.onFocusChanged()
-                                }
-                            }
-                          },
                           onCommit: {
-                            
                             if self.currentItem.key.contains(" ") {
                                 self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
                             }
+                            self.onFocusChanged()
                           }).frame(minWidth: 100).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
                 Spacer()
             } else {
                 TextField("Value",
                           text: $currentItem.text,
-                          onEditingChanged: { (onEditingChanged) in
-                            if !onEditingChanged {
-                                if self.currentItem.text.isEmpty {
-                                    self.textIsValid = false
-                                } else {
-                                    self.onFocusChanged()
-                                }
-                            }
-                          },
                           onCommit: {
-                            self.validateText(text: self.currentItem.text)
+                            print("on commit text.")
+                            print("orig text: \(self.originalText)")
+                            print("new text: \(self.currentItem.text)")
+                            self.saveText(entry: self.currentItem)
                           })
                     .frame(minWidth: 400)
             }
@@ -82,12 +67,9 @@ struct ResourceRow: View {
             }
             
             if self.currentItem.key != self.originalKey {
-                for file in self.appData.allResources {
-                    self.saveKey(filePath: file.pathToResourceFile, entry: self.currentItem)
-                }
+                self.saveKey(filePath: self.pathToResourceFile, entry: self.currentItem)
                 
-                self.runCodeGen()
-                self.isLocked = true
+
             }
             
             if self.currentItem.text != self.originalText {
@@ -99,9 +81,14 @@ struct ResourceRow: View {
     }
     
     func saveKey(filePath: String, entry: ResourceEntry) {
-        if self.originalKey != entry.key {
-            FileUtil.updateKey(filePath: filePath, originalKey: self.originalKey, updatedEntry: entry)
-        }
+        
+            if self.originalKey != entry.key {
+                FileUtil.updateKey(filePath: filePath, originalKey: self.originalKey, updatedEntry: entry)
+            }
+        
+
+        self.runCodeGen()
+        self.isLocked = true
     }
     
     func saveText(entry: ResourceEntry) {

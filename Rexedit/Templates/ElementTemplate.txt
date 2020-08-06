@@ -2,7 +2,7 @@
         /// <summary>
         ///     Looks up a localized string similar to {value}.
         /// </summary>
-        internal static string {name}
+        public static string {name}
         {
             get => ResourceManager.GetString("{name}", resourceCulture);
         }
