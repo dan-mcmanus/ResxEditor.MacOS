@@ -67,39 +67,6 @@ struct ResourceRow: View {
         
     }
     
-    func onFocusChanged() {
-        self.isLocked = !self.isLocked
-        if self.isLocked {
-            //self.save(entry: self.currentItem)
-            if self.currentItem.isNew {
-
-            }
-            
-            if self.currentItem.key != self.originalKey {
-                self.saveKey(filePath: self.pathToResourceFile, entry: self.currentItem)
-                
-
-            }
-            
-            if self.currentItem.text != self.originalText {
-                self.saveText(entry: self.currentItem)
-            }
-            
-            self.appData.allResources = FileUtil.parseFiles(filePath: self.appData.baseResourceFile)
-        }
-    }
-    
-    func saveKey(filePath: String, entry: ResourceEntry) {
-        
-            if self.originalKey != entry.key {
-                FileUtil.updateKey(filePath: filePath, originalKey: self.originalKey, updatedEntry: entry)
-            }
-        
-
-        self.runCodeGen()
-        self.isLocked = true
-    }
-    
     func saveText(entry: ResourceEntry) {
         FileUtil.updateText(filePath: self.pathToResourceFile, entry: entry)
         
