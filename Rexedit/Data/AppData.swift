@@ -26,9 +26,24 @@ class AppData: ObservableObject {
         resources: [],
         pathToResourceFile: ""
     )
+    @Published var files = [String]()
     
-    func refreshData(resourceSet: LanguageResource) {
-        self.masterKeys = resourceSet.masterKeys
-        self.selectedLanguageResource.pathToResourceFile = resourceSet.pathToResourceFile
+    func clear() {
+        self.allResources = [LanguageResource(
+            language: Language("en-US", true),
+            resources: [ResourceEntry(key: "key", text: "value")],
+            pathToResourceFile: ""
+        )]
+        self.baseResourceFile = ""
+        self.defaultNameSpace = ""
+        self.defaultClassName = ""
+        self.masterKeys = [String]()
+        self.filePath = ""
+        self.selectedLanguageResource = LanguageResource(
+            language: Language("en-US", true),
+            resources: [],
+            pathToResourceFile: ""
+        )
+        self.files = [String]()
     }
 }

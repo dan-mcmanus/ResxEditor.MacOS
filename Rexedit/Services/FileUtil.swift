@@ -21,6 +21,22 @@ class FileUtil {
         return path.first! != "/" ? "/\(path)" : path
     }
     
+    static func getAllResxFiles(filePath: String) -> [String] {
+        let directory = getDirectoryOf(file: filePath)
+        var files = [String]()
+        do {
+            for file in try Folder(path: directory).files {
+                if file.name.contains(".resx") {
+                    files.append(file.path)
+                }
+            }
+        } catch {
+            print(error)
+        }
+        
+        return files
+    }
+    
     static func getFileNameFromPath(fullyQualifiedPathString: String) -> String {
         let pathSegments = fullyQualifiedPathString.split(separator: "/")
         return String(pathSegments.last!)
@@ -36,13 +52,29 @@ class FileUtil {
         }
     }
     
+    static func updateKeyIn(file: String, originalKey: String, updatedKey: String) {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: "\(file)")) else {
+            return
+        }
+        do {
+            let xmlDoc = try AEXMLDocument(xml: data)
+            let el = xmlDoc.firstDescendant(where: { $0.attributes["name"] == originalKey})!
+            
+            el.attributes["name"]! = updatedKey
+
+            try xmlDoc.xml.write(to: URL(fileURLWithPath: file), atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print(error)
+        }
+    }
+    
     static func parseFiles(filePath: String) -> [LanguageResource] {
         var resources: [LanguageResource] = []
         var masterKeys: [String] = []
         do {
             let directory = getDirectoryOf(file: filePath)
             for file in try Folder(path: directory).files {
-                print(file.name)
+                
                 if file.name.contains(".resx") {
                     guard let data = try? Data(contentsOf: URL(fileURLWithPath: "\(directory)/\(file.name)")) else {
                         return resources
@@ -155,40 +187,6 @@ class FileUtil {
 
         } catch {
             print(error)
-        }
-    }
-    
-    static func updateKey(filePath: String, originalKey: String, updatedEntry: ResourceEntry) {
-        do {
-            
-            let directory = getDirectoryOf(file: filePath)
-            for file in try Folder(path: directory).files {
-                
-                if file.name.contains(".resx") {
-                    guard let data = try? Data(contentsOf: URL(fileURLWithPath: "\(directory)/\(file.name)")) else {
-                        return
-                    }
-                    let xmlDoc = try AEXMLDocument(xml: data)
-                    
-                    if let entries = xmlDoc.root["data"].all {
-                        for entry in entries {
-                            if entry.attributes["name"]! == originalKey {
-                                entry.attributes["name"]! = updatedEntry.key
-                            }
-                            
-                            do {
-                                try xmlDoc.xml.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: String.Encoding.utf8)
-                            } catch {
-                                print("\(error)")
-                                // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-                            }
-                        }
-                    }
-                }
-            }
-            
-        } catch  {
-            print("\(error)")
         }
     }
     

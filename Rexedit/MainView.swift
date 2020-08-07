@@ -14,6 +14,7 @@ struct MainView: View {
     @State var isHidden = false
     @State var hasUpdates = false
     @State var headerHeight: CGFloat = 40.0
+    @State var showingAlert = false
     
     let pub = NotificationCenter.default
             .publisher(for: NSNotification.Name("hasupdates"))
@@ -34,12 +35,24 @@ struct MainView: View {
                 
                 .padding()
                     if self.hasUpdates {
-                        Text("refresh to view updates")
+                        Text("Resource Keys were normalized. Refresh to view updates")
                             .padding(.leading)
                         
                     }
                 }
                 Spacer()
+                Button(action: {
+                    self.showingAlert = true
+                }) {
+                    Text("Clear")
+                    }.padding()
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Are you sure you want to clear the editor?"),
+                          primaryButton: .destructive(Text("Proceed")) {
+                            self.appData.clear()
+                            self.isHidden = false
+                    }, secondaryButton: .cancel())
+                }
             }.frame(maxWidth: .infinity, maxHeight: self.headerHeight)
             ScrollView([.vertical, .horizontal]) {
                 if !isHidden {
@@ -57,7 +70,7 @@ struct MainView: View {
     
     
     func refresh() {
-        let result = self.appData.baseResourceFile 
+        let result = self.appData.baseResourceFile
         self.appData.allResources = FileUtil.parseFiles(filePath: result).sorted{ $0.language.isDefault && !$1.language.isDefault }
         self.appData.allResources = self.appData.allResources.sorted{ $0.language.isDefault && !$1.language.isDefault }
         self.appData.baseResourceFile = result
@@ -83,6 +96,9 @@ struct MainView: View {
 
             self.appData.allResources = self.appData.allResources.sorted{ $0.language.isDefault && !$1.language.isDefault }
             self.appData.masterKeys = self.appData.allResources.filter{ $0.language.isDefault }.first!.resources.map{ $0.key }
+            
+            self.appData.files = FileUtil.getAllResxFiles(filePath: result.path)
+            self.appData.files.forEach { print($0) }
             self.isHidden = true
         } else {
             // User clicked on "Cancel"

@@ -83,8 +83,7 @@ class ResXFileCodeGenerator {
 
         let resourcesFolder = FileUtil.getDirectoryOf(file: resxFile)
 
-        print(resourcesFolder)
-        let headerTemplatePath = "\(templatesFolder)HeaderTemplate.txt"
+        let headerTemplatePath = "\(templatesFolder)Template.txt"
         let elementTemplatePath = "\(templatesFolder)ElementTemplate.txt"
         
         var fileData = ""

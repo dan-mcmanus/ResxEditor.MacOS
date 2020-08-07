@@ -31,20 +31,31 @@ struct ResourceRow: View {
                 TextField("Key",
                           text: $currentItem.key,
                           onCommit: {
-                            if self.currentItem.key.contains(" ") {
-                                self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
+                            if self.currentItem.key != self.originalKey {
+                                if self.currentItem.key.contains(" ") {
+                                    self.currentItem.key = self.currentItem.key.trimmingCharacters(in: .whitespacesAndNewlines)
+                                }
+                                if self.currentItem.isNew {
+                                    for file in self.appData.allResources {
+                                        FileUtil.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: self.currentItem.key, text: " "))
+                                    }
+                                } else {
+                                    for file in self.appData.files {
+                                        FileUtil.updateKeyIn(file: file, originalKey: self.originalKey, updatedKey: self.currentItem.key)
+                                    }
+                                }
                             }
-                            self.onFocusChanged()
+                            
                           }).frame(minWidth: 100).border(keyIsValid ? Color.clear : Color.red.opacity(0.5))
                 Spacer()
             } else {
                 TextField("Value",
                           text: $currentItem.text,
                           onCommit: {
-                            print("on commit text.")
-                            print("orig text: \(self.originalText)")
-                            print("new text: \(self.currentItem.text)")
-                            self.saveText(entry: self.currentItem)
+                            if self.currentItem.text != self.originalText {
+                                self.saveText(entry: self.currentItem)
+                            }
+
                           })
                     .frame(minWidth: 400)
             }
@@ -61,9 +72,7 @@ struct ResourceRow: View {
         if self.isLocked {
             //self.save(entry: self.currentItem)
             if self.currentItem.isNew {
-                for file in self.appData.allResources {
-                    FileUtil.writeTo(filePath: file.pathToResourceFile, entry: ResourceEntry(key: self.currentItem.key, text: " "))
-                }
+
             }
             
             if self.currentItem.key != self.originalKey {
