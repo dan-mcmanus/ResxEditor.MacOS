@@ -77,7 +77,27 @@ class ResXFileCodeGenerator {
         return className
     }
     
-    static func generateDesignerFile(resxFile: String, nameSpace: String, className: String, designerFileName: String) {
+    static func createDesignerFile(folder: String, fileName: String) {
+        do {
+            let folder = try Folder(path: folder)
+            let file = try folder.createFile(named: "\(fileName).Designer.cs")
+            try file.write("{\"hello\": \"world\"}")
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func generateDesignerFile(resxFile: String, nameSpace: String, className: String, designerFileName: String, modifier: String) {
+        print("resxFile: " + resxFile)
+        print("" + nameSpace)
+        
+        if className == "" {
+            let cName = getClassName(designerFile: resxFile)
+            print("classname" + cName)
+        }
+
+        print("" + designerFileName)
+        print("" + modifier)
         let templatesFolder = #file.replacingOccurrences(of: "Services", with: "Templates")  // <-- this is surprisingly difficult to do
             .replacingOccurrences(of: "ResXFileCodeGenerator.swift", with: "")
 
@@ -103,7 +123,7 @@ class ResXFileCodeGenerator {
             }
             
             if !hasDesignerFile {
-                return
+                createDesignerFile(folder: resourcesFolder, fileName: resxFile)
             }
 
             let resxDoc = try AEXMLDocument(xml: data)
@@ -126,6 +146,7 @@ class ResXFileCodeGenerator {
             }
             
             let designerFile = try String(contentsOfFile: headerTemplatePath)
+                .replacingOccurrences(of: "{modifier}", with: modifier)
                 .replacingOccurrences(of: "{namespace}", with: nameSpace)
                 .replacingOccurrences(of: "{classname}", with: className)
                 .replacingOccurrences(of: "{elementdata}", with: fileData)

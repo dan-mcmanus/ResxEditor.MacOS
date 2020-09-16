@@ -7,47 +7,14 @@
 
 import SwiftUI
 
-struct KeysColumn: View {
-    var baseFilePath: String
-    @EnvironmentObject var appData: AppData
-    var body: some View {
-        let current = self.appData.allResources.filter{$0.language.isDefault}.first!
-        
-        return VStack {
-            HStack {
-                Button("+") {
-                    let newEntry = ResourceEntry(key: "", text: "", isNew: true)
-                    
-                    
-                    var allResources = [LanguageResource]()
-                    for s in self.appData.allResources {
-                        var resources = s.resources.map{$0}
-                        resources.append(newEntry)
-                        allResources.append(LanguageResource(language: s.language, resources: resources, pathToResourceFile: s.pathToResourceFile))
-                    }
-                    self.appData.masterKeys.append(newEntry.key)
-                    self.appData.allResources.removeAll()
-                    self.appData.allResources = allResources
-                    self.appData.masterKeys = self.appData.allResources.filter{$0.language.isDefault}.first!.resources.map{$0.key}
-                    self.appData.baseResourceFile = self.baseFilePath
-                }
-                
-                Spacer()
-                Text("Resource Key")
-                
-                Spacer()
-            }.padding(.top)
-            
-            ForEach(self.appData.masterKeys, id: \.self) { key in
-                ResourceRow(currentItem: current.resources.filter{ $0.key == key }.first ?? ResourceEntry(key: "", text: "", isNew: true), originalKey: key, pathToResourceFile: self.baseFilePath, isPrimary: true, isKeys: true)
-            }
-        }
-    }
-}
-
 struct ResourceColumn: View {
+    @EnvironmentObject var appData: AppData
     @State var resourceSet: LanguageResource
-
+    var codeGenTypes = CodeGenType.allCases.map {$0.rawValue}
+    @State private var selectedCodeGenIdx = 0
+    @State var isShowing = false
+    @State var className = ""
+    @State var ns = ""
     var language: Language
     
     var pathToResourceFile: String
@@ -55,12 +22,24 @@ struct ResourceColumn: View {
         VStack {
             HStack {
                 
-                if self.language.isDefault {
-
-                }
-                
                 Spacer()
                 Text(self.language.name.uppercased())
+                Spacer()
+                if self.language.isDefault {
+                    Text("Code Gen")
+                    Picker(selection: $selectedCodeGenIdx, label: Text("")) {
+                        ForEach(0 ..< codeGenTypes.count) {
+                            Text(self.codeGenTypes[$0])
+                        }
+                    }
+                    .onReceive([self.codeGenTypes[self.selectedCodeGenIdx]].publisher.first()) { value in
+                        self.setCodeGenType(value: value)
+                    }
+                    .frame(width: 100)
+                    
+                }
+
+                
                 
                 Spacer()
             }.padding(.top)
@@ -70,6 +49,25 @@ struct ResourceColumn: View {
             }
         }
         
+    }
+    
+    func setCodeGenType(value: String) {
+        let cgType = CodeGenType.init(rawValue: value)!
+        if self.appData.codeGenType != cgType {
+            self.appData.codeGenType = cgType
+            if self.appData.codeGenType != CodeGenType.none {
+                    
+                    self.appData.defaultNameSpace = ResXFileCodeGenerator.getNamespace(designerFile: self.appData.baseResourceFile)
+                    self.appData.defaultClassName = ResXFileCodeGenerator.getClassName(designerFile: self.appData.baseResourceFile)
+                    
+                    ResXFileCodeGenerator.generateDesignerFile(resxFile: self.appData.baseResourceFile,
+                                                               nameSpace: self.appData.defaultNameSpace,
+                                                               className: self.appData.defaultClassName,
+                                                               designerFileName: FileUtil.getFileNameFromPath(fullyQualifiedPathString: self.appData.baseResourceFile).replacingOccurrences(of: "resx", with: "Designer.cs"),
+                                                               modifier: self.appData.codeGenType.rawValue)
+                }
+            
+        }
     }
 }
 

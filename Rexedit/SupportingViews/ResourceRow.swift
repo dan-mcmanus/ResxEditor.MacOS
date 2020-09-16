@@ -20,14 +20,14 @@ struct ResourceRow: View {
     var originalText: String = ""
     var pathToResourceFile: String
     var isPrimary: Bool
-    var isKeys = false
+    var isKeysColumn = false
     
     var body: some View {
         HStack {
             
             Spacer()
             
-            if self.isKeys {
+            if self.isKeysColumn {
                 TextField("Key",
                           text: $currentItem.key,
                           onCommit: {
@@ -81,7 +81,11 @@ struct ResourceRow: View {
                 self.appData.defaultNameSpace = ResXFileCodeGenerator.getNamespace(designerFile: self.appData.baseResourceFile)
                 self.appData.defaultClassName = ResXFileCodeGenerator.getClassName(designerFile: self.appData.baseResourceFile)
                 
-                ResXFileCodeGenerator.generateDesignerFile(resxFile: self.appData.baseResourceFile, nameSpace: self.appData.defaultNameSpace, className: self.appData.defaultClassName, designerFileName: FileUtil.getFileNameFromPath(fullyQualifiedPathString: self.appData.baseResourceFile).replacingOccurrences(of: "resx", with: "Designer.cs"))
+                ResXFileCodeGenerator.generateDesignerFile(resxFile: self.appData.baseResourceFile,
+                                                           nameSpace: self.appData.defaultNameSpace,
+                                                           className: self.appData.defaultClassName,
+                                                           designerFileName: FileUtil.getFileNameFromPath(fullyQualifiedPathString: self.appData.baseResourceFile).replacingOccurrences(of: "resx", with: "Designer.cs"),
+                                                           modifier: self.appData.codeGenType.rawValue)
             }
         }
     }

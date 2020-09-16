@@ -18,8 +18,6 @@ class AppData: ObservableObject {
     )]
     
     @Published var masterKeys = [String]()
-//    @Published var supportedLanguages: [Language] = []
-//    @Published var filesWithLanguage: [LanguageResource] = []
     @Published var filePath = ""
     @Published var selectedLanguageResource: LanguageResource = LanguageResource(
         language: Language("en-US", true),
@@ -27,6 +25,7 @@ class AppData: ObservableObject {
         pathToResourceFile: ""
     )
     @Published var files = [String]()
+    @Published var codeGenType = CodeGenType.none
     
     func clear() {
         self.allResources = [LanguageResource(

@@ -11,9 +11,6 @@ import ShellOut
 
 
 struct EditorView: View {
-    //@State var languageId: UUID
-    var alignment: VerticalAlignment = .top
-    //@EnvironmentObject var fileData: FileData
     @EnvironmentObject var appData: AppData
     
     var body: some View {
@@ -23,8 +20,6 @@ struct EditorView: View {
                 ResourceColumn(resourceSet: resource, language: resource.language, pathToResourceFile: resource.pathToResourceFile)
             }
         }.frame(maxHeight: .infinity, alignment: .top)
-           // }//
-        //}//.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).background(Color(0x343A40))
         
         
     }
