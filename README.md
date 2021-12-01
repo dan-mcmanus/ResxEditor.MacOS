@@ -1,7 +1,7 @@
-# RexEdit
-Resx file editor for MacOS
+# ResxEditor.MacOS
+Standalone .Resx (Microsoft embedded resources) File Editor for MacOS
 
-## For MacOS Big Sur (Preview)
+## For MacOS Big Sur
 use either branch (master or combined)
 
 ## For MacOS Catalina and below
